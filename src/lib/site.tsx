@@ -66,7 +66,7 @@ function NavLinks({ page }: { page: string }) {
         <Link
           key={n.key}
           to={n.to}
-          hash={"hash" in n ? n.hash : undefined}
+          {...("hash" in n ? { hash: n.hash } : {})}
           className={n.page === page ? "active" : ""}
           activeProps={{}}
         >
