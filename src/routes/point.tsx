@@ -4,9 +4,10 @@ import { KIND_LABELS, POINTS } from "@/lib/data";
 import { pageHead, send, Tags, track, useI18n } from "@/lib/site";
 
 export const Route = createFileRoute("/point")({
-  validateSearch: (s: Record<string, unknown>): { p?: string } => ({
-    p: typeof s.p === "string" ? s.p : s.p != null ? String(s.p) : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { p?: string } => {
+    const v = s["p"];
+    return v == null ? {} : { p: String(v) };
+  },
   head: () => pageHead("Пункт приёма — Сдай батарейку"),
   component: PointPage,
 });
