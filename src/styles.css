@@ -333,7 +333,10 @@ main { width: 100%; margin: 0; padding: 0; }
 
 /* Hero photo used as background: restore the readability overlay */
 .hero-photo.hero.full::after { display: block; }
-.hero-photo .hero-img { object-fit: contain; }
+.hero-photo .hero-img { object-fit: contain; object-position: right center; }
+@media (min-width: 760px) {
+  .hero-photo .hero-img { width: 72%; left: auto; right: 0; }
+}
 @media (max-width: 759px) {
   .hero-photo.hero::after { background: linear-gradient(to right, rgba(219,238,117,1) 0%, rgba(219,238,117,.97) 45%, rgba(219,238,117,.8) 72%, rgba(219,238,117,.15) 100%); }
 }
