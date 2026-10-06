@@ -261,10 +261,10 @@ export const I18N: any = {
       items: [
         { q: "What kind of batteries can I recycle?", a: "Almost any household battery: AA, AAA, button cells, 9V, phone batteries. Damaged batteries and unmarked packs are not accepted. Rechargeable batteries are accepted only at some points — check the card." },
         { q: "What is not accepted?", a: "Damaged, swollen or leaking batteries; unmarked or home-made battery packs; car batteries, which need a separate facility." },
+        { q: "What do I do with a damaged or swollen battery?", a: "Don't put it in the shared box. Bag it separately, tape the terminals, and ask the point or a city eco-centre whether they will take it." },
         { q: "Do I need to prepare them?", a: "No special preparation. Collect them in a bag or jar. Tape the terminals of lithium batteries, keep batteries away from metal objects, and check the point's card to confirm they accept your type." },
         { q: "Are there bonuses?", a: "Not yet. We are confirming the city's EcoPoints programme at recycle.mos.ru and retailer loyalty schemes." },
         { q: "Why can't batteries go in ordinary rubbish?", a: "In landfill, heavy metals leach into soil and water, and lithium batteries can catch fire when crushed in a waste truck." },
-        { q: "What do I do with a damaged or swollen battery?", a: "Don't put it in the shared box. Bag it separately, tape the terminals, and ask the point or a city eco-centre whether they will take it." },
         { q: "Do they accept small electronics?", a: "In the pilot district, only batteries for now. Electronics points will be added after verification." },
         { q: "How much can I bring at once?", a: "Usually a household amount — one bag. Exact limits are on each point's card." },
         { q: "The information is wrong or the point is gone?", a: "Tell us through the form at the bottom — we'll check and fix it within a few days." }
