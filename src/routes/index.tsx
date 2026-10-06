@@ -58,7 +58,7 @@ function Index() {
 
   return (
     <>
-      <section className="hero full" id="top">
+      <section className="hero full hero-photo" id="top">
         <img className="hero-img" src="/img/hero-illustration.jpg" alt="" />
         <div className="hero-inner">
           <div className="hero-text">
