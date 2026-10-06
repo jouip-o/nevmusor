@@ -58,7 +58,8 @@ function Index() {
 
   return (
     <>
-      <section className="hero full" id="top">
+      <section className="hero full hero-photo" id="top">
+        <img className="hero-img" src="/img/hero-illustration.jpg" alt="" />
         <div className="hero-inner">
           <div className="hero-text">
             <span className="pill">{t("hero.pilot")}</span>
@@ -71,7 +72,6 @@ function Index() {
               <span>{t("hero.statVerified")}</span> <span>{t("hero.statVerifiedVal")}</span>
             </p>
           </div>
-          <img className="hero-art" src="/img/hero-illustration.jpg" alt="" width="1254" height="1254" />
         </div>
         <a className="scroll-arrow" href="#map" aria-label="Scroll to map">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">

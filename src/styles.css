@@ -331,3 +331,9 @@ main { width: 100%; margin: 0; padding: 0; }
 .rate-btn.active { background: var(--brown); color: var(--bg); border-color: var(--brown); }
 .rate .thanks { color: var(--brown); margin: 0; }
 
+/* Hero photo used as background: restore the readability overlay */
+.hero-photo.hero.full::after { display: block; }
+@media (max-width: 759px) {
+  .hero-photo.hero::after { background: linear-gradient(to right, rgba(219,238,117,1) 0%, rgba(219,238,117,.97) 45%, rgba(219,238,117,.8) 72%, rgba(219,238,117,.15) 100%); }
+}
+
