@@ -14,7 +14,7 @@ let ymapsPromise: Promise<any> | null = null;
 function loadYmaps(lang: string) {
   if (ymapsPromise) return ymapsPromise;
   ymapsPromise = new Promise((resolve, reject) => {
-    const key = import.meta.env.VITE_YANDEX_MAPS_KEY;
+    const key = import.meta.env["VITE_YANDEX_MAPS_KEY"];
     const sc = document.createElement("script");
     sc.src = `https://api-maps.yandex.ru/2.1/?lang=${lang === "en" ? "en_US" : "ru_RU"}${key ? `&apikey=${key}` : ""}`;
     sc.onload = () => (window as any).ymaps.ready(() => resolve((window as any).ymaps));
