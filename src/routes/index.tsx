@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { POINTS } from "@/lib/data";
 import { pageHead, useI18n } from "@/lib/site";
 import { FaqList } from "@/lib/faq";
@@ -9,10 +9,20 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Hotspots sit on the numbers baked into /img/map-screenshot.jpg,
-// which was drawn with this same bounding box. If the image is regenerated, keep MAP_BBOX in sync.
-const MAP_BBOX = { north: 55.65279803318956, south: 55.590763384885264, west: 37.529296875, east: 37.68310546875, w: 1792, h: 1280 };
-const merc = (lat: number) => Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 180 / 2));
+// Yandex Maps JS API 2.1. Optional key: set VITE_YANDEX_MAPS_KEY.
+let ymapsPromise: Promise<any> | null = null;
+function loadYmaps(lang: string) {
+  if (ymapsPromise) return ymapsPromise;
+  ymapsPromise = new Promise((resolve, reject) => {
+    const key = import.meta.env["VITE_YANDEX_MAPS_KEY"];
+    const sc = document.createElement("script");
+    sc.src = `https://api-maps.yandex.ru/2.1/?lang=${lang === "en" ? "en_US" : "ru_RU"}${key ? `&apikey=${key}` : ""}`;
+    sc.onload = () => (window as any).ymaps.ready(() => resolve((window as any).ymaps));
+    sc.onerror = reject;
+    document.head.appendChild(sc);
+  });
+  return ymapsPromise;
+}
 
 function Index() {
   const { t, tr } = useI18n();
@@ -24,14 +34,60 @@ function Index() {
     if (hash) document.getElementById(hash)?.scrollIntoView();
   }, [hash]);
 
-  const setActive = (id: string) => setActiveId((cur) => (cur === id ? null : id));
+  const mapEl = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<any>(null);
+  const marksRef = useRef<Record<string, any>>({});
+  const { lang } = useI18n();
+
+  useEffect(() => {
+    let map: any;
+    let dead = false;
+    loadYmaps(lang).then((ymaps) => {
+      if (dead || !mapEl.current) return;
+      map = new ymaps.Map(mapEl.current, { center: [55.622, 37.6], zoom: 13, controls: ["zoomControl", "geolocationControl"] });
+      map.behaviors.enable("scrollZoom");
+      mapRef.current = map;
+      marksRef.current = {};
+      POINTS.forEach((p: any, i: number) => {
+        const m = new ymaps.Placemark(
+          [p.lat, p.lng],
+          {
+            iconContent: String(i + 1),
+            hintContent: `${tr(p.name)}, ${tr(p.address)}`,
+            balloonContentHeader: `${i + 1}. ${tr(p.name)}`,
+            balloonContentBody: `${tr(p.address)}<br>🕘 ${tr(p.hours)}`,
+            balloonContentFooter: `<a href="/point?p=${p.id}">${t("map.details")} →</a>`,
+          },
+          { preset: "islands#brownStretchyIcon" }
+        );
+        m.events.add("click", () => setActiveId(p.id));
+        map.geoObjects.add(m);
+        marksRef.current[p.id] = m;
+      });
+      const b = map.geoObjects.getBounds();
+      if (b) map.setBounds(b, { checkZoomRange: true, zoomMargin: 40 });
+    });
+    return () => {
+      dead = true;
+      map?.destroy();
+      mapRef.current = null;
+    };
+  }, [lang]);
+
+  useEffect(() => {
+    const m = activeId && marksRef.current[activeId];
+    if (m && mapRef.current) {
+      mapRef.current.panTo(m.geometry.getCoordinates());
+      m.balloon.open();
+    }
+  }, [activeId]);
 
   useEffect(() => {
     if (!activeId) return;
     const row = document.querySelector(`.place[data-id="${activeId}"]`);
     if (row) row.scrollIntoView({ block: "nearest", behavior: "smooth" });
     const onClick = (e: MouseEvent) => {
-      if (!(e.target as Element).closest(".hot, .place")) setActiveId(null);
+      if (!(e.target as Element).closest(".lmap, .place")) setActiveId(null);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActiveId(null);
@@ -44,7 +100,6 @@ function Index() {
     };
   }, [activeId]);
 
-  const { north, south, west, east, h } = MAP_BBOX;
   const groups: { name: string; items: any[] }[] = [];
   POINTS.forEach((p: any) => {
     const name = tr(p.name);
@@ -83,40 +138,7 @@ function Index() {
       <section className="map-section full" id="map">
         <div className="map-grid">
           <div className="lmap" id="lmap" role="region" aria-label="Map">
-            <img src="/img/map-screenshot.jpg" alt={t("map.title")} width="1792" height="1280" />
-            {POINTS.map((p: any, i: number) => {
-              const x = ((p.lng - west) / (east - west)) * 100;
-              const y = ((((merc(north) - merc(p.lat)) / (merc(north) - merc(south))) * h - 32) / h) * 100;
-              const cls = ["hot", activeId === p.id ? "active" : "", previewId === p.id ? "preview" : ""].join(" ").trim();
-              return (
-                <button
-                  key={p.id}
-                  type="button"
-                  className={cls}
-                  data-id={p.id}
-                  style={{ left: `${x.toFixed(2)}%`, top: `${y.toFixed(2)}%` }}
-                  aria-label={`${i + 1}. ${tr(p.name)}, ${tr(p.address)}`}
-                  onClick={(e) => {
-                    if ((e.target as Element).closest("a")) return;
-                    setActive(p.id);
-                  }}
-                >
-                  <span className="hot-tip">
-                    <b>
-                      {i + 1}. {tr(p.name)}
-                    </b>
-                    {tr(p.address)}
-                    <span className="hot-more">
-                      🕘 {tr(p.hours)}
-                      <Link to="/point" search={{ p: p.id }}>
-                        {t("map.details")} →
-                      </Link>
-                    </span>
-                  </span>
-                </button>
-              );
-            })}
-            <span className="mcredit">© OpenStreetMap</span>
+            <div ref={mapEl} className="ymap" />
           </div>
           <aside className="places">
             <div className="places-scroll">
@@ -133,6 +155,13 @@ function Index() {
                         data-id={p.id}
                         to="/point"
                         search={{ p: p.id }}
+                        onClick={(e) => {
+                          if (mapRef.current) {
+                            e.preventDefault();
+                            setActiveId(p.id);
+                            document.getElementById("lmap")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+                          }
+                        }}
                         onMouseEnter={() => setPreviewId(p.id)}
                         onMouseLeave={() => setPreviewId(null)}
                         onFocus={() => setPreviewId(p.id)}
