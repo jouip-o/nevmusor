@@ -80,9 +80,10 @@ function NavLinks({ page }: { page: string }) {
 export function Header() {
   const { t, lang, toggle } = useI18n();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const locationHref = useRouterState({ select: (s) => s.location.href });
   const page = pageFromPath(pathname);
   const [open, setOpen] = useState(false);
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => setOpen(false), [locationHref]);
   return (
     <div id="hdr">
       <a className="announce" href="https://dobro.ru/event/11840898" target="_blank" rel="noopener">
@@ -106,6 +107,7 @@ export function Header() {
           id="menuBtn"
           type="button"
           aria-label="Menu"
+          aria-controls="menu"
           aria-expanded={open ? "true" : "false"}
           onClick={() => setOpen(!open)}
         >
@@ -114,7 +116,9 @@ export function Header() {
           <span></span>
         </button>
       </header>
-      <div className="menu" id="menu" hidden={!open}>
+      <div className="menu" id="menu" hidden={!open} onClick={(event) => {
+        if ((event.target as Element).closest("a")) setOpen(false);
+      }}>
         <NavLinks page={page} />
         <div className="menu-soon">
           <span>{t("menu.account")}</span>
@@ -175,11 +179,22 @@ export function track(name: string, params: unknown) {
 
 export const DESCRIPTION =
   "Проверенные пункты приёма батареек в Чертаново: адреса, часы работы, что принимают и как найти вход.";
-export const pageHead = (title: string) => ({
+const PAGE_DESCRIPTIONS: Record<string, string> = {
+  "Что принимают — Сдай батарейку": "Как подготовить батарейки к сдаче в Чертаново: что принимают, что нельзя приносить и как хранить батарейки безопасно.",
+  "Вопросы — Сдай батарейку": "Ответы на вопросы о сдаче батареек в Чертаново: подготовка, ограничения и повреждённые аккумуляторы.",
+  "Почему это важно — Сдай батарейку": "Почему батарейки нужно сдавать отдельно: влияние на окружающую среду и переработка в Чертаново.",
+  "Волонтёрам — Сдай батарейку": "Волонтёрство в проекте «Сдай батарейку»: помощь пунктам приёма и экологическим акциям в Чертаново.",
+  "О проекте — Сдай батарейку": "О проекте «Сдай батарейку» в Чертаново и проверенных пунктах приёма батареек.",
+  "Обратная связь — Сдай батарейку": "Обратная связь с проектом «Сдай батарейку»: сообщите об изменениях в пунктах приёма Чертаново.",
+  "Пункт приёма — Сдай батарейку": "Адрес, часы работы и принимаемые батарейки: информация о выбранном пункте приёма в Чертаново.",
+};
+export const pageHead = (title: string, description = PAGE_DESCRIPTIONS[title] ?? DESCRIPTION) => ({
   meta: [
     { title },
-    { name: "description", content: DESCRIPTION },
+    { name: "description", content: description },
     { property: "og:title", content: title },
-    { property: "og:description", content: DESCRIPTION },
+    { property: "og:description", content: description },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
   ],
 });

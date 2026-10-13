@@ -1,0 +1,2 @@
+- [x] Adapt shared navigation, homepage illustration, map and content layouts for phones.
+- [x] Verify phone navigation, map zoom and location details across phone sizes.

@@ -44,7 +44,7 @@ function Index() {
     let dead = false;
     loadYmaps(lang).then((ymaps) => {
       if (dead || !mapEl.current) return;
-      map = new ymaps.Map(mapEl.current, { center: [55.622, 37.6], zoom: 13, controls: ["zoomControl", "geolocationControl"] });
+      map = new ymaps.Map(mapEl.current, { center: [55.622, 37.6], zoom: 13, controls: ["zoomControl", "geolocationControl"] }, { suppressMapOpenBlock: true });
       map.behaviors.enable("scrollZoom");
       mapRef.current = map;
       marksRef.current = {};
@@ -58,7 +58,7 @@ function Index() {
             balloonContentBody: `${tr(p.address)}<br>🕘 ${tr(p.hours)}`,
             balloonContentFooter: `<a href="/point?p=${p.id}">${t("map.details")} →</a>`,
           },
-          { preset: "islands#brownStretchyIcon" }
+          { preset: "islands#brownStretchyIcon", balloonPanelMaxMapArea: 0, balloonMaxWidth: 260 }
         );
         m.events.add("click", () => setActiveId(p.id));
         map.geoObjects.add(m);
@@ -85,7 +85,7 @@ function Index() {
   useEffect(() => {
     if (!activeId) return;
     const row = document.querySelector(`.place[data-id="${activeId}"]`);
-    if (row) row.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (row && window.matchMedia("(min-width: 900px)").matches) row.scrollIntoView({ block: "nearest", behavior: "smooth" });
     const onClick = (e: MouseEvent) => {
       if (!(e.target as Element).closest(".lmap, .place")) setActiveId(null);
     };
@@ -159,7 +159,7 @@ function Index() {
                           if (mapRef.current) {
                             e.preventDefault();
                             setActiveId(p.id);
-                            document.getElementById("lmap")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+                            document.getElementById("lmap")?.scrollIntoView({ block: "start", behavior: "smooth" });
                           }
                         }}
                         onMouseEnter={() => setPreviewId(p.id)}
