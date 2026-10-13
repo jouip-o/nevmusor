@@ -1,4 +1,4 @@
 - [x] Adapt shared navigation, homepage illustration, map and content layouts for phones.
 - [x] Verify phone navigation, map zoom and location details across phone sizes.
-- [ ] Remove the account code input and phone option; use email sign-in links.
-- [ ] Add map popup stars connected to account favourites and verify saving/removal.
+- [x] Remove the account code input and phone option; use email sign-in links.
+- [x] Add map popup stars connected to account favourites and verify saving/removal.
