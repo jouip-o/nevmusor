@@ -413,8 +413,10 @@ main { width: 100%; margin: 0; padding: 0; }
 .fav-btn { margin-left: auto; }
 
 /* Small account favourite control inside Yandex popups. */
-.map-popup-footer { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
-.map-favorite-slot { display: flex; align-items: center; }
+.map-popup-footer { display: grid; grid-template-columns: minmax(0, 1fr) 36px; align-items: center; gap: .75rem; min-height: 40px; }
+.map-popup-footer > a { min-width: 0; overflow-wrap: anywhere; }
+/* Reserve the star's size before its React portal mounts so Yandex measures the full footer. */
+.map-favorite-slot { display: flex; align-items: center; width: 36px; min-height: 36px; }
 .map-favorite { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 7px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--brown); cursor: pointer; flex-shrink: 0; }
 .map-favorite svg { width: 21px; height: 21px; fill: none; }
 .map-favorite.is-saved svg { fill: currentColor; }
