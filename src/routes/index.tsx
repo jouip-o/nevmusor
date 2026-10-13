@@ -9,14 +9,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Yandex Maps JS API 2.1. Optional key: set VITE_YANDEX_MAPS_KEY.
+// Yandex Maps JS API 2.1 (the key is issued for 2.1; the v3 endpoint rejects it).
 let ymapsPromise: Promise<any> | null = null;
 function loadYmaps(lang: string) {
   if (ymapsPromise) return ymapsPromise;
   ymapsPromise = new Promise((resolve, reject) => {
-    const key = import.meta.env["VITE_YANDEX_MAPS_KEY"];
+    const key = "1363fda3-718d-4325-a45a-7c4a546af50d";
     const sc = document.createElement("script");
-    sc.src = `https://api-maps.yandex.ru/2.1/?lang=${lang === "en" ? "en_US" : "ru_RU"}${key ? `&apikey=${key}` : ""}`;
+    sc.src = `https://api-maps.yandex.ru/2.1/?lang=${lang === "en" ? "en_US" : "ru_RU"}&apikey=${key}`;
     sc.onload = () => (window as any).ymaps.ready(() => resolve((window as any).ymaps));
     sc.onerror = reject;
     document.head.appendChild(sc);
