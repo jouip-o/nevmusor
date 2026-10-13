@@ -410,6 +410,11 @@ main { width: 100%; margin: 0; padding: 0; }
 .acc-favs { padding-left: 1.1rem; }
 .acc-favs li { margin: .4rem 0; }
 .acc-favs .back { background: none; border: 0; cursor: pointer; margin-left: .4rem; }
+.acc-stats { margin: 2rem 0; }
+.acc-total strong { font-size: 2rem; }
+.acc-drop { grid-template-columns: 1fr 1fr auto; align-items: end; max-width: 560px; }
+.acc-chart { width: 100%; max-width: 640px; height: auto; display: block; margin-top: 1rem; }
+@media (max-width: 559px) { .acc-drop { grid-template-columns: 1fr; } }
 .fav-btn { margin-left: auto; }
 
 /* Small account favourite control inside Yandex popups. */

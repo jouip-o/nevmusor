@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      dropoffs: {
+        Row: {
+          count: number
+          created_at: string
+          dropped_on: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          count: number
+          created_at?: string
+          dropped_on?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          count?: number
+          created_at?: string
+          dropped_on?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       favorites: {
         Row: {
           created_at: string
