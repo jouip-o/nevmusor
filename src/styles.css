@@ -345,3 +345,54 @@ main { width: 100%; margin: 0; padding: 0; }
 /* Interactive Yandex map */
 .lmap .ymap { width: 100%; height: 70vh; min-height: 420px; }
 @media (min-width: 760px) { .lmap .ymap { height: 100%; min-height: 560px; } .lmap { align-self: stretch; } }
+
+/* Phone layouts preserve the original sheet and desktop composition. */
+@media (max-width: 899px) {
+  #hdr { display: contents; }
+  .header { display: grid; grid-template-columns: minmax(0, 1fr) 44px 44px; gap: .35rem; min-height: 64px; }
+  .brand, .brand-name { min-width: 0; }
+  .brand-name { overflow-wrap: anywhere; line-height: 1.2; }
+  .brand-icon { flex-shrink: 0; }
+  .lang-toggle, .nav + .lang-toggle { margin: 0; min-height: 44px; padding: 0; }
+  .menu-btn { width: 44px; height: 44px; }
+  .menu { top: 64px; max-height: calc(100svh - 64px); overflow-y: auto; }
+  .menu a { min-height: 44px; }
+  .lmap .ymap { height: 65svh; min-height: 320px; max-height: 480px; }
+  .places-scroll { position: static; padding: 1.4rem 1rem 1.6rem; }
+  .place { grid-template-columns: 30px minmax(0, 1fr); min-height: 56px; }
+  .place .pa { min-width: 0; overflow-wrap: anywhere; }
+}
+@media (max-width: 759px) {
+  html { scroll-padding-top: 76px; }
+  .announce { display: grid; grid-template-columns: 10px minmax(0, 1fr) 18px; gap: .6rem; padding: .75rem 1rem; font-size: 1rem; }
+  .hero.hero-photo { min-height: 0; }
+  .hero-photo .hero-img { top: 0; bottom: auto; width: 100%; height: 300px; object-position: center; }
+  .hero-photo.hero.full::after { display: none; }
+  .hero-photo .hero-inner { display: block; padding: 300px 1rem 5rem; }
+  .hero-photo h1 { font-size: 2.25rem; line-height: 1.08; letter-spacing: 0; overflow-wrap: anywhere; }
+  .hero-photo .pill { letter-spacing: .06em; }
+  .btn { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .btn-big { min-width: 0; font-size: 1rem; padding: .85rem .75rem; min-height: 52px; }
+  .hero-hint { font-size: .85rem; }
+  .scroll-arrow { bottom: 1rem; width: 44px; height: 44px; }
+  .page-hero { height: 38svh; min-height: 220px; max-height: 340px; }
+  .page-hero h1, .page-hero-text h1 { font-size: 2rem; letter-spacing: 0; overflow-wrap: anywhere; }
+  .section { padding-top: 1.6rem; padding-bottom: 1.6rem; }
+  .mission p { font-size: 1.2rem; }
+  .faq summary { align-items: flex-start; min-height: 52px; }
+  .faq summary::after { flex-shrink: 0; }
+  .form input, .form textarea, .form select { font-size: 16px; min-height: 44px; }
+  .form .check input { min-height: auto; flex-shrink: 0; }
+  .detail-body h1 { font-size: 1.8rem; letter-spacing: 0; overflow-wrap: anywhere; }
+  .fact .v, .addr, .footer p { overflow-wrap: anywhere; }
+  .rate-row { flex-wrap: wrap; }
+  .rate-btn { min-height: 48px; flex-basis: 40%; }
+  .event-wide { padding-left: 1rem; padding-right: 1rem; }
+  .event h3 { font-size: 1.5rem; }
+}
+@media (max-width: 359px) {
+  .brand { font-size: .9rem; }
+  .hero-photo .hero-img { height: 250px; }
+  .hero-photo .hero-inner { padding-top: 250px; }
+  .hero-photo h1 { font-size: 2rem; }
+}
