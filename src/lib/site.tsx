@@ -99,6 +99,9 @@ export function Header() {
         <nav className="nav">
           <NavLinks page={page} />
         </nav>
+        <Link className="lang-toggle" to="/account" aria-label={lang === "ru" ? "Личный кабинет" : "My account"}>
+          👤
+        </Link>
         <button className="lang-toggle" type="button" aria-label="Switch language" onClick={toggle}>
           {lang === "ru" ? "EN" : "RU"}
         </button>
@@ -120,10 +123,9 @@ export function Header() {
         if ((event.target as Element).closest("a")) setOpen(false);
       }}>
         <NavLinks page={page} />
-        <div className="menu-soon">
-          <span>{t("menu.account")}</span>
-          <span className="soon">{t("menu.soon")}</span>
-        </div>
+        <Link to="/account" className={page === "account" ? "active" : ""}>
+          {lang === "ru" ? "Личный кабинет" : "My account"}
+        </Link>
       </div>
     </div>
   );
