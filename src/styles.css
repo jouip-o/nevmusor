@@ -411,3 +411,14 @@ main { width: 100%; margin: 0; padding: 0; }
 .acc-favs li { margin: .4rem 0; }
 .acc-favs .back { background: none; border: 0; cursor: pointer; margin-left: .4rem; }
 .fav-btn { margin-left: auto; }
+
+/* Small account favourite control inside Yandex popups. */
+.map-popup-footer { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.map-favorite-slot { display: flex; align-items: center; }
+.map-favorite { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 7px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--brown); cursor: pointer; flex-shrink: 0; }
+.map-favorite svg { width: 21px; height: 21px; fill: none; }
+.map-favorite.is-saved svg { fill: currentColor; }
+.map-favorite:hover { background: var(--fill-soft); }
+.map-favorite:focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
+.map-favorite:disabled { opacity: .5; cursor: wait; }
+.map-favorite-error { max-width: 150px; color: var(--brown); font-size: 12px; }
