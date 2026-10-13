@@ -74,8 +74,8 @@ export function BatteryStats({ userId, ru }: { userId: string; ru: boolean }) {
         <path d={path} fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
         {totals.map((v, i) => (
           <g key={i}>
-            <circle cx={x(i)} cy={y(v)} r="4" fill="#dbee75" stroke="currentColor" strokeWidth="2"><title>{`${months[i].label}: ${v}`}</title></circle>
-            <text x={x(i)} y={H - 8} textAnchor="middle" fontSize="11" fill="currentColor">{months[i].label}</text>
+            <circle cx={x(i)} cy={y(v)} r="4" fill="#dbee75" stroke="currentColor" strokeWidth="2"><title>{`${months[i]!.label}: ${v}`}</title></circle>
+            <text x={x(i)} y={H - 8} textAnchor="middle" fontSize="11" fill="currentColor">{months[i]!.label}</text>
           </g>
         ))}
       </svg>
