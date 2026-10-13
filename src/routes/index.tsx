@@ -1,8 +1,11 @@
 import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { POINTS } from "@/lib/data";
 import { pageHead, useI18n } from "@/lib/site";
 import { FaqList } from "@/lib/faq";
+import { useFavorites, useUser } from "@/lib/account";
+import { MapFavorite } from "@/lib/map-favorite";
 
 export const Route = createFileRoute("/")({
   head: () => pageHead("Сдай батарейку — Чертаново"),
@@ -28,6 +31,9 @@ function Index() {
   const { t, tr } = useI18n();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [previewId, setPreviewId] = useState<string | null>(null);
+  const { user, ready: userReady } = useUser();
+  const favorites = useFavorites(user?.id);
+  const [favoriteSlot, setFavoriteSlot] = useState<{ id: string; element: HTMLElement } | null>(null);
   const hash = useRouterState({ select: (s) => s.location.hash });
 
   useEffect(() => {
@@ -38,6 +44,21 @@ function Index() {
   const mapRef = useRef<any>(null);
   const marksRef = useRef<Record<string, any>>({});
   const { lang } = useI18n();
+
+  useEffect(() => {
+    const container = mapEl.current;
+    if (!container) return;
+    const observer = new MutationObserver(() => {
+      const element = container.querySelector<HTMLElement>("[data-map-favorite]");
+      const id = element?.dataset["mapFavorite"];
+      setFavoriteSlot((current) => {
+        if (!element || !id) return current ? null : current;
+        return current?.element === element ? current : { id, element };
+      });
+    });
+    observer.observe(container, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let map: any;
@@ -56,7 +77,7 @@ function Index() {
             hintContent: `${tr(p.name)}, ${tr(p.address)}`,
             balloonContentHeader: `${i + 1}. ${tr(p.name)}`,
             balloonContentBody: `${tr(p.address)}<br>🕘 ${tr(p.hours)}`,
-            balloonContentFooter: `<a href="/point?p=${p.id}">${t("map.details")} →</a>`,
+            balloonContentFooter: `<div class="map-popup-footer"><a href="/point?p=${p.id}">${t("map.details")} →</a><span class="map-favorite-slot" data-map-favorite="${p.id}"></span></div>`,
           },
           { preset: "islands#brownStretchyIcon", balloonPanelMaxMapArea: 0, balloonMaxWidth: 260 }
         );
@@ -113,6 +134,12 @@ function Index() {
 
   return (
     <>
+      {favoriteSlot ? createPortal(
+        <MapFavorite saved={favorites.ids.includes(favoriteSlot.id)} signedIn={Boolean(user)}
+          disabled={!userReady || !favorites.ready || favorites.busy} error={favorites.error}
+          onToggle={() => { void favorites.toggle(favoriteSlot.id); }} />,
+        favoriteSlot.element,
+      ) : null}
       <section className="hero full hero-photo" id="top">
         <img className="hero-img" src="/img/hero-illustration.jpg" alt="" />
         <div className="hero-inner">
