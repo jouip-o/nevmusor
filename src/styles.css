@@ -429,3 +429,6 @@ main { width: 100%; margin: 0; padding: 0; }
 .map-favorite:focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
 .map-favorite:disabled { opacity: .5; cursor: wait; }
 .map-favorite-error { max-width: 150px; color: var(--brown); font-size: 12px; }
+.acc-ref { grid-template-columns: 1fr auto; max-width: 560px; }
+.acc-admin table { width: 100%; max-width: 640px; border-collapse: collapse; }
+.acc-admin th, .acc-admin td { text-align: left; padding: .5rem; border-bottom: 1px solid var(--line); }
