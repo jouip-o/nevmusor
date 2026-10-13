@@ -22,22 +22,43 @@ export function useUser() {
 
 export function useFavorites(userId: string | undefined) {
   const [ids, setIds] = useState<string[]>([]);
+  const [busy, setBusy] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [error, setError] = useState("");
   useEffect(() => {
-    if (!userId) return setIds([]);
+    let active = true;
+    setIds([]);
+    setReady(false);
+    setError("");
+    if (!userId) { setReady(true); return; }
     supabase
       .from("favorites")
       .select("point_id")
-      .then(({ data }) => setIds((data ?? []).map((r) => r.point_id)));
+      .eq("user_id", userId)
+      .then(({ data, error: readError }) => {
+        if (!active) return;
+        if (readError) setError(readError.message);
+        else setIds((data ?? []).map((r) => r.point_id));
+        setReady(true);
+      });
+    return () => { active = false; };
   }, [userId]);
   const toggle = async (pointId: string) => {
-    if (!userId) return;
-    if (ids.includes(pointId)) {
-      setIds(ids.filter((x) => x !== pointId));
-      await supabase.from("favorites").delete().eq("point_id", pointId);
-    } else {
-      setIds([...ids, pointId]);
-      await supabase.from("favorites").insert({ user_id: userId, point_id: pointId });
+    if (!userId || busy || !ready) return;
+    setBusy(true);
+    setError("");
+    const saved = ids.includes(pointId);
+    try {
+      const { error: writeError } = saved
+        ? await supabase.from("favorites").delete().eq("user_id", userId).eq("point_id", pointId)
+        : await supabase.from("favorites").insert({ user_id: userId, point_id: pointId });
+      if (writeError) { setError(writeError.message); return; }
+      setIds((current) => saved ? current.filter((x) => x !== pointId) : [...current, pointId]);
+    } catch {
+      setError("Unable to save favourite");
+    } finally {
+      setBusy(false);
     }
   };
-  return { ids, toggle };
+  return { ids, toggle, busy, ready, error };
 }

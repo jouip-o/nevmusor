@@ -4,12 +4,13 @@ import { supabase } from "@/integrations/supabase/client";
 import { POINTS } from "@/lib/data";
 import { pageHead, useI18n } from "@/lib/site";
 import { useFavorites, useUser } from "@/lib/account";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/account")({
   head: () =>
     pageHead(
       "Личный кабинет — Сдай батарейку",
-      "Вход по коду из письма и избранные пункты приёма батареек в Чертаново.",
+      "Вход по ссылке из письма и избранные пункты приёма батареек в Чертаново.",
     ),
   component: AccountPage,
 });
@@ -27,14 +28,12 @@ function AccountPage() {
 function SignIn() {
   const { lang } = useI18n();
   const ru = lang === "ru";
-  const [method, setMethod] = useState<"email" | "phone">("email");
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
-  const [step, setStep] = useState<"enter" | "code">("enter");
+  const [step, setStep] = useState<"enter" | "sent">("enter");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
 
-  const sendCode = async (e: React.FormEvent) => {
+  const sendLink = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
     setErr("");
@@ -44,54 +43,28 @@ function SignIn() {
     });
     setBusy(false);
     if (error) return setErr(error.message);
-    setStep("code");
-  };
-
-  const verify = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setBusy(true);
-    setErr("");
-    const { error } = await supabase.auth.verifyOtp({ email: email.trim(), token: code.trim(), type: "email" });
-    setBusy(false);
-    if (error) setErr(ru ? "Неверный или устаревший код" : "Wrong or expired code");
+    setStep("sent");
   };
 
   return (
     <>
       <h1>{ru ? "Вход и регистрация" : "Sign in or register"}</h1>
-      <p>{ru ? "Без пароля — мы пришлём код." : "No password — we'll send you a code."}</p>
-      <div className="rate-row">
-        <button type="button" className={`rate-btn ${method === "email" ? "active" : ""}`} onClick={() => setMethod("email")}>
-          Email
-        </button>
-        <button type="button" className={`rate-btn ${method === "phone" ? "active" : ""}`} onClick={() => setMethod("phone")}>
-          {ru ? "Телефон" : "Phone"}
-        </button>
-      </div>
-      {method === "phone" ? (
-        <p className="acc-note">
-          {ru ? "Вход по номеру телефона скоро появится. Пока используйте email." : "Phone sign-in is coming soon. Please use email for now."}
-        </p>
-      ) : step === "enter" ? (
-        <form className="acc-form" onSubmit={sendCode}>
+      <p>{ru ? "Без пароля — мы пришлём ссылку для входа на email." : "No password — we'll email you a sign-in link."}</p>
+      {step === "enter" ? (
+        <form className="acc-form" onSubmit={sendLink}>
           <label>
             Email
             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
           </label>
-          <button className="btn btn-primary" disabled={busy}>{ru ? "Получить код" : "Send code"}</button>
+          <Button type="submit" className="btn btn-primary" disabled={busy}>{busy ? (ru ? "Отправляем…" : "Sending…") : ru ? "Получить ссылку" : "Send sign-in link"}</Button>
         </form>
       ) : (
-        <form className="acc-form" onSubmit={verify}>
-          <p>{ru ? `Мы отправили письмо на ${email}. Введите код из письма или нажмите ссылку в нём.` : `We emailed ${email}. Enter the code or tap the link in the email.`}</p>
-          <label>
-            {ru ? "Код" : "Code"}
-            <input inputMode="numeric" autoComplete="one-time-code" required value={code} onChange={(e) => setCode(e.target.value)} />
-          </label>
-          <button className="btn btn-primary" disabled={busy}>{ru ? "Войти" : "Sign in"}</button>
-          <button type="button" className="back" onClick={() => { setStep("enter"); setCode(""); }}>
+        <div className="acc-form">
+          <p role="status">{ru ? `Мы отправили письмо на ${email.trim()}. Нажмите ссылку в письме, чтобы войти.` : `We emailed ${email.trim()}. Tap the link in the email to sign in.`}</p>
+          <Button type="button" variant="link" className="back" onClick={() => { setStep("enter"); setErr(""); }}>
             ← {ru ? "Другой email" : "Different email"}
-          </button>
-        </form>
+          </Button>
+        </div>
       )}
       {err ? <p className="acc-err">{err}</p> : null}
     </>
