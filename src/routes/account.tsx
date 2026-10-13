@@ -5,6 +5,7 @@ import { POINTS } from "@/lib/data";
 import { pageHead, useI18n } from "@/lib/site";
 import { useFavorites, useUser } from "@/lib/account";
 import { Button } from "@/components/ui/button";
+import { BatteryStats } from "@/lib/battery-stats";
 
 export const Route = createFileRoute("/account")({
   head: () =>
@@ -102,6 +103,7 @@ function Profile({ userId, email }: { userId: string; email: string }) {
         </label>
         <button className="btn btn-primary">{saved ? (ru ? "Сохранено ✓" : "Saved ✓") : ru ? "Сохранить" : "Save"}</button>
       </form>
+      <BatteryStats userId={userId} ru={ru} />
       <h2>{ru ? "Избранные пункты" : "Favourite points"}</h2>
       {favs.length ? (
         <ul className="acc-favs">
