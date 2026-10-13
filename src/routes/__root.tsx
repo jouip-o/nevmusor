@@ -1,3 +1,4 @@
+import { useCaptureReferral } from "@/lib/referrals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -96,6 +97,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useCaptureReferral();
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>
