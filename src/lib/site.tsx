@@ -132,7 +132,7 @@ export function Footer() {
     <div id="ftr">
       <footer className="footer">
         <p>
-          <strong>{t("siteName")}</strong> · <span>{t("footer.proto")}</span>
+          <strong>{t("siteName")}</strong>
         </p>
         <p>
           <span>{t("footer.links")}</span> · <a href="/CREDITS.md">{t("footer.credits")}</a>
