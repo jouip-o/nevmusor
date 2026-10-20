@@ -7,7 +7,6 @@ export const I18N: any = {
     nav: { map: "Карта", guide: "Что принимают", why: "Почему это важно", faq: "Вопросы", volunteer: "Волонтёрам", about: "О проекте", feedback: "Обратная связь" },
     menu: { account: "Личный кабинет: мои батарейки, избранные пункты", soon: "скоро" },
     hero: {
-      pilot: "Пилотный район: Чертаново, ЮАО",
       title: "Куда сдать батарейки?",
       tagline: "Счастливые батарейки — рядом с домом",
       lead: "Проверенные пункты приёма батареек и аккумуляторов рядом с домом: адрес, часы работы, что принимают и как найти вход.",
@@ -158,7 +157,6 @@ export const I18N: any = {
     nav: { map: "Map", guide: "What's accepted", why: "Why it matters", faq: "FAQ", volunteer: "Volunteer", about: "About", feedback: "Feedback" },
     menu: { account: "My account: batteries recycled, favourite points", soon: "soon" },
     hero: {
-      pilot: "Pilot district: Chertanovo, South Moscow",
       title: "Where can I dispose of my batteries?",
       tagline: "Happy batteries nearby",
       lead: "Verified battery drop-off points near you: address, hours, what they accept, and photos showing how to find the entrance.",
