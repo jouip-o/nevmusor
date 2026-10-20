@@ -148,7 +148,6 @@ function Index() {
         <img className="hero-img" src="/img/hero-illustration.jpg" alt="" />
         <div className="hero-inner">
           <div className="hero-text">
-            <span className="pill">{t("hero.pilot")}</span>
             <h1>{t("hero.title")}</h1>
             <a className="btn btn-big" href="#map">
               {t("hero.cta")}

@@ -360,7 +360,6 @@ main { width: 100%; margin: 0; padding: 0; }
   .hero-photo.hero.full::after { display: none; }
   .hero-photo .hero-inner { display: block; padding: 300px 1rem 5rem; }
   .hero-photo h1 { font-size: 2.25rem; line-height: 1.08; letter-spacing: 0; overflow-wrap: anywhere; }
-  .hero-photo .pill { letter-spacing: .06em; }
   .btn { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
   .btn-big { min-width: 0; font-size: 1rem; padding: .85rem .75rem; min-height: 52px; }
   .hero-hint { font-size: .85rem; }
