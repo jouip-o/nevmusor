@@ -5,7 +5,7 @@ import { ACCEPT_LABELS } from "./data";
 
 // ---------- Config ----------
 export const CONFIG = {
-  // Where feedback / "was this useful" answers are POSTed as JSON. Empty = store in the browser only (prototype).
+  // Where feedback / "was this useful" answers are POSTed as JSON. Empty = store in the browser only.
   feedbackEndpoint: "",
   // Yandex.Metrica counter id, e.g. 12345678. Empty = no analytics.
   metrikaId: "",
