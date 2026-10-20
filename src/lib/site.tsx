@@ -86,11 +86,6 @@ export function Header() {
   useEffect(() => setOpen(false), [locationHref]);
   return (
     <div id="hdr">
-      <a className="announce" href="https://dobro.ru/event/11840898" target="_blank" rel="noopener">
-        <span className="announce-dot"></span>
-        <span>{t("announce")}</span>
-        <span className="announce-arrow">↗</span>
-      </a>
       <header className="header">
         <Link className="brand" to="/">
           <span className="brand-icon">🔋</span>

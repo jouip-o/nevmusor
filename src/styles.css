@@ -36,15 +36,6 @@ p { margin: 0 0 .8rem; }
 strong { font-weight: 700; }
 .pill, .fact .k, .event .fmt, .place .n { font-family: inherit; }
 
-/* Announcement */
-.announce {
-  display: flex; align-items: center; gap: .7rem; padding: 1rem 1.2rem; justify-content: center; text-align: center;
-  background: transparent; color: var(--brown); text-decoration: none; font-size: clamp(1.05rem, 2.6vw, 1.35rem); font-weight: 700; border-bottom: 1px solid var(--line); letter-spacing: .02em; line-height: 1.3;
-}
-.announce:hover span:nth-child(2) { text-decoration: underline; text-underline-offset: 4px; }
-.announce-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brown); flex: none; }
-.announce-arrow { opacity: .8; }
-
 /* Header: name left, everything else right */
 .header {
   position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; gap: .6rem;
@@ -364,7 +355,6 @@ main { width: 100%; margin: 0; padding: 0; }
 }
 @media (max-width: 759px) {
   html { scroll-padding-top: 76px; }
-  .announce { display: grid; grid-template-columns: 10px minmax(0, 1fr) 18px; gap: .6rem; padding: .75rem 1rem; font-size: 1rem; }
   .hero.hero-photo { min-height: 0; }
   .hero-photo .hero-img { top: 0; bottom: auto; width: 100%; height: 300px; object-position: center; }
   .hero-photo.hero.full::after { display: none; }

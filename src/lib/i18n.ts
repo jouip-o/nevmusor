@@ -4,7 +4,6 @@
 export const I18N: any = {
   ru: {
     siteName: "Сдай батарейку",
-    announce: "«Батарейки, сдавайтесь!» — онлайн-акция для волонтёров, до 30 сентября. Подать заявку",
     nav: { map: "Карта", guide: "Что принимают", why: "Почему это важно", faq: "Вопросы", volunteer: "Волонтёрам", about: "О проекте", feedback: "Обратная связь" },
     menu: { account: "Личный кабинет: мои батарейки, избранные пункты", soon: "скоро" },
     hero: {
@@ -156,7 +155,6 @@ export const I18N: any = {
 
   en: {
     siteName: "Battery Drop-off",
-    announce: "“Batteries, surrender!” — online volunteer campaign, until 30 September. Apply",
     nav: { map: "Map", guide: "What's accepted", why: "Why it matters", faq: "FAQ", volunteer: "Volunteer", about: "About", feedback: "Feedback" },
     menu: { account: "My account: batteries recycled, favourite points", soon: "soon" },
     hero: {
