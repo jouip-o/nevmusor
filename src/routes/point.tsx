@@ -60,27 +60,7 @@ function PointPage() {
   }
 
   const yandex = `https://yandex.ru/maps/?pt=${p.lng},${p.lat}&z=17&l=map`;
-  const slots = [
-    { src: p.photos.building, cap: t("detail.photoBuilding") },
-    { src: p.photos.entrance, cap: t("detail.photoEntrance") },
-    { src: p.photos.point, cap: t("detail.photoPoint") },
-    ...(p.photos.more || []).map((src: string, i: number) => ({ src, cap: `${t("detail.photoMore")} ${i + 1}` })),
-  ];
-  const gal = (s: any, i: number, cls: string) =>
-    s.src ? (
-      <figure className={cls} key={i}>
-        <img src={s.src} alt={s.cap} loading="lazy" />
-        <figcaption>{s.cap}</figcaption>
-      </figure>
-    ) : (
-      <figure className={cls} key={i}>
-        <div className={`ph ph-${(i % 4) + 1}`}>
-          <span className="ph-icon">{["🏬", "🚪", "🔋", "📷"][Math.min(i, 3)]}</span>
-          <span className="ph-txt">{t("detail.photoSoon")}</span>
-        </div>
-        <figcaption>{s.cap}</figcaption>
-      </figure>
-    );
+  const building = p.photos.building;
 
   const rate = (q: string, v: boolean) => {
     const next = { ...saved, [q]: v };
@@ -98,8 +78,8 @@ function PointPage() {
   return (
     <div id="detailBody">
       <div className="page-hero full point-hero">
-        {slots[0].src ? (
-          <img src={slots[0].src} alt="" />
+        {building ? (
+          <img src={building} alt="" />
         ) : (
           <div className={`ph ph-${(POINTS.indexOf(p) % 4) + 1}`}>
             <span className="ph-icon">🏬</span>
@@ -117,7 +97,6 @@ function PointPage() {
           <Link className="back" to="/" hash="map">← {t("detail.back")}</Link>
           <FavButton pointId={p.id} />
         </p>
-        <div className="g-strip">{slots.slice(1).map((s, i) => gal(s, i + 1, "g-thumb"))}</div>
         <div className="addr">
           <a href={yandex} target="_blank" rel="noopener">{t("detail.route")} ↗</a>
         </div>
