@@ -77,15 +77,8 @@ function PointPage() {
 
   return (
     <div id="detailBody">
-      <div className="page-hero full point-hero">
-        {building ? (
-          <img src={building} alt="" />
-        ) : (
-          <div className={`ph ph-${(POINTS.indexOf(p) % 4) + 1}`}>
-            <span className="ph-icon">🏬</span>
-            <span className="ph-txt">{t("detail.photoSoon")}</span>
-          </div>
-        )}
+      <div className={`page-hero full point-hero${building ? "" : " no-photo"}`}>
+        {building ? <img src={building} alt="" /> : null}
         <div className="page-hero-text">
           <span className="pill">{tr(KIND_LABELS[p.kind])}</span>
           <h1>{tr(p.name)}</h1>

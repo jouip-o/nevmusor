@@ -11,8 +11,7 @@ function Why() {
   const li = (k: string) => t(k).map((i: string) => <li key={i}>{i}</li>);
   return (
     <>
-      <div className="page-hero full">
-        <img src="/img/why.jpg" alt="" width="1600" height="685" />
+      <div className="page-hero full no-photo">
         <h1>{t("problem.title")}</h1>
       </div>
       <section className="section page-top narrow">

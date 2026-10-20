@@ -40,8 +40,7 @@ function Feedback() {
 
   return (
     <>
-      <div className="page-hero full">
-        <img src="/img/box-yellow.jpg" alt="" width="900" height="675" />
+      <div className="page-hero full no-photo">
         <h1>{t("fb.title")}</h1>
       </div>
       <section className="section page-top narrow">
