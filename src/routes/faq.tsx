@@ -3,7 +3,7 @@ import { pageHead, useI18n } from "@/lib/site";
 import { FaqList } from "@/lib/faq";
 
 export const Route = createFileRoute("/faq")({
-  head: () => pageHead("Вопросы — Сдай батарейку"),
+  head: () => pageHead("Вопросы — Не в мусор"),
   component: Faq,
 });
 

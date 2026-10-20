@@ -1,9 +1,9 @@
 // @ts-nocheck
 // UI strings. Russian first; English second.
-// The site name is a WORKING TITLE — replace "siteName" in both languages once chosen.
+// Site name: «Не в мусор» — used in the header, the footer and page titles.
 export const I18N: any = {
   ru: {
-    siteName: "Сдай батарейку",
+    siteName: "Не в мусор",
     nav: { map: "Карта", guide: "Что принимают", why: "Почему это важно", faq: "Вопросы", volunteer: "Волонтёрам", about: "О проекте", feedback: "Обратная связь" },
     menu: { account: "Личный кабинет: мои батарейки, избранные пункты", soon: "скоро" },
     hero: {
@@ -150,7 +150,7 @@ export const I18N: any = {
   },
 
   en: {
-    siteName: "Battery Drop-off",
+    siteName: "Не в мусор",
     nav: { map: "Map", guide: "What's accepted", why: "Why it matters", faq: "FAQ", volunteer: "Volunteer", about: "About", feedback: "Feedback" },
     menu: { account: "My account: batteries recycled, favourite points", soon: "soon" },
     hero: {
