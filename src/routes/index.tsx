@@ -79,7 +79,7 @@ function Index() {
             balloonContentBody: `${tr(p.address)}<br>🕘 ${tr(p.hours)}`,
             balloonContentFooter: `<div class="map-popup-footer"><a href="/point?p=${p.id}">${t("map.details")} →</a><span class="map-favorite-slot" data-map-favorite="${p.id}"></span></div>`,
           },
-          { preset: "islands#brownStretchyIcon", balloonPanelMaxMapArea: 0, balloonMaxWidth: 260 }
+          { preset: "islands#circleIcon", iconColor: "#5c2b03", iconLayout: "islands#circleIconLayout", iconShape: undefined, iconSize: [30, 30], iconTextSize: 12, balloonPanelMaxMapArea: 0, balloonMaxWidth: 260 }
         );
         m.events.add("click", () => setActiveId(p.id));
         map.geoObjects.add(m);
