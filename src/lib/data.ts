@@ -149,6 +149,150 @@ export const POINTS: any = [
     },
     photos: { building: null, entrance: null, point: null, more: [] },
     verified: "2026-09"
+  },
+  {
+    id: "bat2",
+    name: { ru: "Пункт приема батареек", en: "Battery acceptance point" },
+    kind: "private",
+    address: { ru: "Старокачаловская улица, вл5А, 117216 • этаж 1", en: "Starokachalovskaya Street, 5A, 117216, 1st floor" },
+    hours: { ru: "Ежедневно 10:00–20:00", en: "Daily 10:00–20:00" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Уточняется", en: "To be confirmed" },
+    contact: { ru: "Уточняется", en: "To be confirmed" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.57002, lng: 37.57882,
+    access: {
+      ru: ["Пункт находится на 1 этаже.", "Инструкция будет дополнена после проверки на месте."],
+      en: ["The point is on the 1st floor.", "Instructions will be completed after an on-site check."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "bat3",
+    name: { ru: "Пункт приема батареек", en: "Battery acceptance point" },
+    kind: "private",
+    address: { ru: "улица Поляны, 5Ак1, 117624", en: "Polyany Street, 5Ak1, 117624" },
+    hours: { ru: "Ежедневно 11:00–20:00", en: "Daily 11:00–20:00" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Уточняется", en: "To be confirmed" },
+    contact: { ru: "Уточняется", en: "To be confirmed" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.55467, lng: 37.55284,
+    access: {
+      ru: ["Инструкция будет дополнена после проверки на месте."],
+      en: ["Instructions will be completed after an on-site check."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "bat4",
+    name: { ru: "Пункт приема батареек", en: "Battery acceptance point" },
+    kind: "private",
+    address: { ru: "бульвар Адмирала Ушакова, 7, 117624 • этаж 1", en: "Admiral Ushakov Boulevard, 7, 117624, 1st floor" },
+    hours: { ru: "Круглосуточно", en: "24 hours" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Уточняется", en: "To be confirmed" },
+    contact: { ru: "Уточняется", en: "To be confirmed" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.54630, lng: 37.55129,
+    access: {
+      ru: ["Пункт работает круглосуточно и находится на 1 этаже.", "Инструкция будет дополнена после проверки на месте."],
+      en: ["The point is open 24 hours and is on the 1st floor.", "Instructions will be completed after an on-site check."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "vv5",
+    name: { ru: "ВкусВилл", en: "VkusVill" },
+    kind: "private",
+    address: { ru: "Бульвар Дмитрия Донского, 2к1, 117628 • этаж 1", en: "Dmitry Donskoy Boulevard, 2k1, 117628, 1st floor" },
+    hours: { ru: "Ежедневно 9:00–23:00", en: "Daily 9:00–23:00" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
+    contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.57043, lng: 37.57589,
+    access: {
+      ru: ["Магазин находится на 1 этаже.", "Войдите в магазин через главный вход.", "Бокс для батареек обычно у входа или у касс; спросите у сотрудника."],
+      en: ["The store is on the 1st floor.", "Enter the store through the main entrance.", "The battery box is usually by the entrance or the checkouts; ask a staff member."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "vv6",
+    name: { ru: "ВкусВилл", en: "VkusVill" },
+    kind: "private",
+    address: { ru: "Феодосийская улица, 7к3, 117216", en: "Feodosiyskaya Street, 7k3, 117216" },
+    hours: { ru: "Ежедневно 9:00–22:00", en: "Daily 9:00–22:00" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
+    contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.56091, lng: 37.57800,
+    access: {
+      ru: ["Войдите в магазин через главный вход.", "Бокс для батареек обычно у входа или у касс; спросите у сотрудника."],
+      en: ["Enter the store through the main entrance.", "The battery box is usually by the entrance or the checkouts; ask a staff member."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "vv7",
+    name: { ru: "ВкусВилл", en: "VkusVill" },
+    kind: "private",
+    address: { ru: "Скобелевская улица, 20, 117624", en: "Skebelevskaya Street, 20, 117624" },
+    hours: { ru: "Ежедневно 7:00–23:45", en: "Daily 7:00–23:45" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
+    contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.54632, lng: 37.55553,
+    access: {
+      ru: ["Войдите в магазин через главный вход.", "Бокс для батареек обычно у входа или у касс; спросите у сотрудника."],
+      en: ["Enter the store through the main entrance.", "The battery box is usually by the entrance or the checkouts; ask a staff member."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "vv8",
+    name: { ru: "ВкусВилл", en: "VkusVill" },
+    kind: "private",
+    address: { ru: "улица Адмирала Руднева, 2 • этаж 1", en: "Admiral Rudnev Street, 2, 1st floor" },
+    hours: { ru: "Ежедневно 9:00–22:00", en: "Daily 9:00–22:00" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
+    contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.54419, lng: 37.52553,
+    access: {
+      ru: ["Магазин находится на 1 этаже.", "Войдите в магазин через главный вход.", "Бокс для батареек обычно у входа или у касс; спросите у сотрудника."],
+      en: ["The store is on the 1st floor.", "Enter the store through the main entrance.", "The battery box is usually by the entrance or the checkouts; ask a staff member."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
+  },
+  {
+    id: "vv9",
+    name: { ru: "ВкусВилл", en: "VkusVill" },
+    kind: "private",
+    address: { ru: "Южнобутовская улица, 113, 117042", en: "Yuzhnobutovskaya Street, 113, 117042" },
+    hours: { ru: "Ежедневно 9:00–22:00", en: "Daily 9:00–22:00" },
+    accepts: ["household", "button", "rechargeable"],
+    limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
+    contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
+    bonus: { ru: "Нет", en: "None" },
+    lat: 55.53356, lng: 37.51763,
+    access: {
+      ru: ["Войдите в магазин через главный вход.", "Бокс для батареек обычно у входа или у касс; спросите у сотрудника."],
+      en: ["Enter the store through the main entrance.", "The battery box is usually by the entrance or the checkouts; ask a staff member."]
+    },
+    photos: { building: null, entrance: null, point: null, more: [] },
+    verified: "2026-10"
   }
 ];
 
