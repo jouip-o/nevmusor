@@ -82,6 +82,10 @@ function Index() {
           { preset: "islands#circleIcon", iconColor: "#5c2b03", iconSize: [30, 30], iconTextSize: 12, balloonPanelMaxMapArea: 0, balloonMaxWidth: 260 }
         );
         m.events.add("click", () => setActiveId(p.id));
+        // Desktop: show the full balloon (name, address, hours, favourite star) on hover.
+        m.events.add("mouseenter", () => {
+          if (window.matchMedia("(min-width: 900px)").matches) setActiveId(p.id);
+        });
         map.geoObjects.add(m);
         marksRef.current[p.id] = m;
       });
