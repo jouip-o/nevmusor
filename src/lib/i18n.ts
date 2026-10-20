@@ -1,6 +1,6 @@
 // @ts-nocheck
 // UI strings. Russian first; English second.
-// The site name is a WORKING TITLE — replace "siteName" in both languages once chosen.
+// Site name: «Не в мусор» — used in the header, the footer and page titles.
 export const I18N: any = {
   ru: {
     siteName: "Не в мусор",
