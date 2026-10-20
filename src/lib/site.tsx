@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, Fragment, useContext, useEffect, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { I18N } from "./i18n";
 import { ACCEPT_LABELS } from "./data";
@@ -58,20 +58,22 @@ export function pageFromPath(pathname: string) {
 }
 
 // ---------- Header / footer (shared by every page) ----------
-function NavLinks({ page }: { page: string }) {
+function NavLinks({ page, afterFirst }: { page: string; afterFirst?: ReactNode }) {
   const { t } = useI18n();
   return (
     <>
-      {NAV.map((n) => (
-        <Link
-          key={n.key}
-          to={n.to}
-          {...("hash" in n ? { hash: n.hash } : {})}
-          className={n.page === page ? "active" : ""}
-          activeProps={{}}
-        >
-          {t(n.key)}
-        </Link>
+      {NAV.map((n, i) => (
+        <Fragment key={n.key}>
+          <Link
+            to={n.to}
+            {...("hash" in n ? { hash: n.hash } : {})}
+            className={n.page === page ? "active" : ""}
+            activeProps={{}}
+          >
+            {t(n.key)}
+          </Link>
+          {i === 0 && afterFirst}
+        </Fragment>
       ))}
     </>
   );
@@ -84,6 +86,11 @@ export function Header() {
   const page = pageFromPath(pathname);
   const [open, setOpen] = useState(false);
   useEffect(() => setOpen(false), [locationHref]);
+  const accountLink = (
+    <Link to="/account" className={page === "account" ? "active" : ""}>
+      {lang === "ru" ? "Личный кабинет" : "My account"}
+    </Link>
+  );
   return (
     <div id="hdr">
       <header className="header">
@@ -117,10 +124,7 @@ export function Header() {
       <div className="menu" id="menu" hidden={!open} onClick={(event) => {
         if ((event.target as Element).closest("a")) setOpen(false);
       }}>
-        <NavLinks page={page} />
-        <Link to="/account" className={page === "account" ? "active" : ""}>
-          {lang === "ru" ? "Личный кабинет" : "My account"}
-        </Link>
+        <NavLinks page={page} afterFirst={accountLink} />
       </div>
     </div>
   );
