@@ -11,8 +11,7 @@ function Faq() {
   const { t } = useI18n();
   return (
     <>
-      <div className="page-hero full">
-        <img src="/img/faq.jpg" alt="" width="1600" height="685" />
+      <div className="page-hero full no-photo">
         <h1>{t("faq.title")}</h1>
       </div>
       <section className="section page-top narrow">

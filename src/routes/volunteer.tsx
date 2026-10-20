@@ -10,8 +10,7 @@ function Volunteer() {
   const { t } = useI18n();
   return (
     <>
-      <div className="page-hero full">
-        <img src="/img/volunteer.jpg" alt="" width="1600" height="685" />
+      <div className="page-hero full no-photo">
         <h1>{t("vol.title")}</h1>
       </div>
       <section className="section page-top event-wide">
@@ -19,9 +18,6 @@ function Volunteer() {
         <div className="events" id="events">
           {t("vol.events").map((e: any) => (
             <article className="event" key={e.name}>
-              <a className="event-img" href={e.url} target="_blank" rel="noopener">
-                <img src="/img/box-yellow.jpg" alt="" loading="lazy" />
-              </a>
               <div className="event-body">
                 <div className="fmt">{e.format}</div>
                 <h3>

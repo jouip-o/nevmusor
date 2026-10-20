@@ -36,11 +36,6 @@ export const I18N: any = {
       kind: "Тип пункта",
       verified: "Проверено",
       howto: "Как найти пункт",
-      photoBuilding: "1. Здание",
-      photoEntrance: "2. Вход",
-      photoPoint: "3. Сам пункт приёма",
-      photoSoon: "Фото скоро",
-      photoMore: "Фото",
       steps: "Пошагово",
       route: "Открыть в Яндекс Картах",
       usefulQ: "Была ли информация полезной?",
@@ -94,7 +89,6 @@ export const I18N: any = {
         "Не храните батарейки рядом с металлическими предметами и не разбирайте их.",
         "Проверьте на карточке пункта, что там принимают именно ваш тип."
       ],
-      photoCap: "Так выглядит бокс для батареек в магазине — обычно у входа или у касс."
     },
     bonus: {
       title: "Будут ли бонусы?",
@@ -183,11 +177,6 @@ export const I18N: any = {
       kind: "Point type",
       verified: "Verified",
       howto: "How to find the point",
-      photoBuilding: "1. The building",
-      photoEntrance: "2. The entrance",
-      photoPoint: "3. The drop-off box",
-      photoSoon: "Photo coming soon",
-      photoMore: "Photo",
       steps: "Step by step",
       route: "Open in Yandex Maps",
       usefulQ: "Was this useful?",
@@ -241,7 +230,6 @@ export const I18N: any = {
         "Keep batteries away from metal objects and do not take them apart.",
         "Check the point's card to confirm they accept your battery type."
       ],
-      photoCap: "A typical in-store battery box — usually by the entrance or the checkouts."
     },
     bonus: {
       title: "Are there bonuses?",

@@ -31,10 +31,6 @@ function Guide() {
             <h2 className="mt">{t("prep.title")}</h2>
             <ol className="steps" id="prepList">{li("prep.items")}</ol>
           </div>
-          <figure className="prep-photo">
-            <img src="/img/box-store.jpg" alt="" loading="lazy" width="1000" height="1333" />
-            <figcaption>{t("prep.photoCap")}</figcaption>
-          </figure>
         </div>
         <div className="callout">
           <strong>{t("bonus.title")}</strong>
