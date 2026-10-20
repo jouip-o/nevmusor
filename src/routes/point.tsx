@@ -28,7 +28,7 @@ export const Route = createFileRoute("/point")({
     const v = s["p"];
     return v == null ? {} : { p: String(v) };
   },
-  head: () => pageHead("Пункт приёма — Сдай батарейку"),
+  head: () => pageHead("Пункт приёма — Не в мусор"),
   component: PointPage,
 });
 

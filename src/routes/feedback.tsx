@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import { pageHead, send, track, useI18n } from "@/lib/site";
 
 export const Route = createFileRoute("/feedback")({
-  head: () => pageHead("Обратная связь — Сдай батарейку"),
+  head: () => pageHead("Обратная связь — Не в мусор"),
   component: Feedback,
 });
 

@@ -58,7 +58,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "color-scheme", content: "light" },
       { name: "theme-color", content: "#dbee75" },
-      { title: "Сдай батарейку — Чертаново" },
+      { title: "Не в мусор — Чертаново" },
       { name: "description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

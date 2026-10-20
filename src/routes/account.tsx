@@ -11,7 +11,7 @@ import { Referrals } from "@/lib/referrals";
 export const Route = createFileRoute("/account")({
   head: () =>
     pageHead(
-      "Личный кабинет — Сдай батарейку",
+      "Личный кабинет — Не в мусор",
       "Вход по ссылке из письма и избранные пункты приёма батареек в Чертаново.",
     ),
   component: AccountPage,

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { pageHead, useI18n } from "@/lib/site";
 
 export const Route = createFileRoute("/why")({
-  head: () => pageHead("Почему это важно — Сдай батарейку"),
+  head: () => pageHead("Почему это важно — Не в мусор"),
   component: Why,
 });
 

@@ -8,7 +8,7 @@ import { useFavorites, useUser } from "@/lib/account";
 import { MapFavorite } from "@/lib/map-favorite";
 
 export const Route = createFileRoute("/")({
-  head: () => pageHead("Сдай батарейку — Чертаново"),
+  head: () => pageHead("Не в мусор — Чертаново"),
   component: Index,
 });
 
