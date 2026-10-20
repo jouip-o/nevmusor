@@ -5,7 +5,7 @@ import { ACCEPT_LABELS } from "./data";
 
 // ---------- Config ----------
 export const CONFIG = {
-  // Where feedback / "was this useful" answers are POSTed as JSON. Empty = store in the browser only (prototype).
+  // Where feedback / "was this useful" answers are POSTed as JSON. Empty = store in the browser only.
   feedbackEndpoint: "",
   // Yandex.Metrica counter id, e.g. 12345678. Empty = no analytics.
   metrikaId: "",
@@ -132,7 +132,7 @@ export function Footer() {
     <div id="ftr">
       <footer className="footer">
         <p>
-          <strong>{t("siteName")}</strong> · <span>{t("footer.proto")}</span>
+          <strong>{t("siteName")}</strong>
         </p>
         <p>
           <span>{t("footer.links")}</span> · <a href="/CREDITS.md">{t("footer.credits")}</a>

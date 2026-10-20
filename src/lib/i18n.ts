@@ -13,8 +13,6 @@ export const I18N: any = {
       cta: "Показать пункты",
       cta2: "Как подготовить",
       statPoints: "пунктов приёма",
-      statVerifiedVal: "Сентябрь 2026",
-      statVerified: "последняя проверка"
     },
     map: {
       title: "Пункты приёма",
@@ -146,7 +144,6 @@ export const I18N: any = {
       empty: "Пожалуйста, напишите сообщение."
     },
     footer: {
-      proto: "Прототип, сентябрь 2026. Данные проверяются ежемесячно.",
       links: "Telegram · ВКонтакте — скоро",
       credits: "Фото"
     }
@@ -163,8 +160,6 @@ export const I18N: any = {
       cta: "Show me where",
       cta2: "How to prepare",
       statPoints: "drop-off points",
-      statVerifiedVal: "September 2026",
-      statVerified: "last checked"
     },
     map: {
       title: "Drop-off points",
@@ -296,7 +291,6 @@ export const I18N: any = {
       empty: "Please write a message."
     },
     footer: {
-      proto: "Prototype, September 2026. Data is re-checked monthly.",
       links: "Telegram · VK — coming soon",
       credits: "Photo credits"
     }

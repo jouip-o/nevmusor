@@ -153,8 +153,7 @@ function Index() {
               {t("hero.cta")}
             </a>
             <p className="hero-hint">
-              <span id="statPoints">{POINTS.length}</span> <span>{t("hero.statPoints")}</span> ·{" "}
-              <span>{t("hero.statVerified")}</span> <span>{t("hero.statVerifiedVal")}</span>
+              <span id="statPoints">{POINTS.length}</span> <span>{t("hero.statPoints")}</span>
             </p>
           </div>
         </div>
