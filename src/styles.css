@@ -34,7 +34,7 @@ p { margin: 0 0 .8rem; }
 
 .mt { margin-top: 1.6rem; }
 strong { font-weight: 700; }
-.fact .k, .event .fmt, .place .n { font-family: inherit; }
+.pill, .fact .k, .event .fmt, .place .n { font-family: inherit; }
 
 /* Header: name left, everything else right */
 .header {
@@ -105,6 +105,7 @@ main { width: 100%; margin: 0; padding: 0; }
 .stars use { transform-box: fill-box; }
 .hero-text { padding: 0; width: 100%; display: flex; flex-direction: column; align-items: flex-start; }
 @media (min-width: 760px) { .hero-text { padding: 0; max-width: 42rem; } .hero::after { background: linear-gradient(to right, rgba(219,238,117,1) 0%, rgba(219,238,117,.96) 40%, rgba(219,238,117,0) 75%); } }
+.pill { display: inline-block; color: var(--brown); font-weight: 600; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .6rem; }
 .hero h1 { font-size: clamp(2.4rem, 8vw, 4.6rem); line-height: 1; margin-bottom: 1.2rem; }
 .tagline { font-size: clamp(1.15rem, 4vw, 1.5rem); color: var(--on-green); font-weight: 700; margin: 0 0 1.3rem; }
 .btn {
