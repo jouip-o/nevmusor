@@ -385,6 +385,14 @@ main { width: 100%; margin: 0; padding: 0; }
   .hero-photo .hero-inner { padding-top: 250px; }
   .hero-photo h1 { font-size: 2rem; }
 }
+/* Hero on phones: text on the left, illustration behind it */
+@media (max-width: 759px) {
+  .hero.hero-photo { min-height: 70svh; display: flex; align-items: center; }
+  .hero-photo .hero-img { inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: 70% center; }
+  .hero-photo.hero.full::after { display: block; }
+  .hero-photo .hero-inner { padding: 2rem 1rem 5rem; }
+  .hero-photo .hero-text { max-width: 62%; }
+}
 
 /* Account */
 @media (max-width: 899px) { .header { grid-template-columns: minmax(0, 1fr) 44px 44px 44px; } }
