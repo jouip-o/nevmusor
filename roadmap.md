@@ -3,4 +3,4 @@
 - [x] Remove the account code input and phone option; use email sign-in links.
 - [x] Add map popup stars connected to account favourites and verify saving/removal.
 - [x] Diagnose email-link account entry, handle expired links and verify persistent sign-in.
-- [ ] Fix and verify email sign-in after entering through a referral link.
+- [x] Fix and verify email sign-in after entering through a referral link.
