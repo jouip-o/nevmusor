@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import { initializeAccountSession } from "./account-session";
 
 // Session persists in browser storage, so people stay signed in after closing the site.
 export function useUser() {
   const [user, setUser] = useState<User | null>(null);
   const [ready, setReady] = useState(false);
+  const [linkError, setLinkError] = useState(false);
   useEffect(() => {
+    let active = true;
+    let changed = false;
     const { data } = supabase.auth.onAuthStateChange((_e, session) => {
+      if (!active) return;
+      if (_e !== "INITIAL_SESSION") changed = true;
       setUser(session?.user ?? null);
+      if (session?.user) { setLinkError(false); setReady(true); }
+    });
+    initializeAccountSession().then((result) => {
+      if (!active) return;
+      if (!changed) { setUser(result.user ?? null); setLinkError(result.linkError); }
       setReady(true);
     });
-    supabase.auth.getUser().then(({ data: d }) => {
-      setUser(d.user ?? null);
-      setReady(true);
-    });
-    return () => data.subscription.unsubscribe();
+    return () => { active = false; data.subscription.unsubscribe(); };
   }, []);
-  return { user, ready };
+  return { user, ready, linkError };
 }
 
 export function useFavorites(userId: string | undefined) {
