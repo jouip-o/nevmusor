@@ -393,7 +393,6 @@ main { width: 100%; margin: 0; padding: 0; }
   .hero-photo .hero-inner { padding: 2rem 1rem 5rem; }
   .hero-photo .hero-text { max-width: 62%; }
 }
-}
 
 /* Account */
 @media (max-width: 899px) { .header { grid-template-columns: minmax(0, 1fr) 44px 44px 44px; } }
