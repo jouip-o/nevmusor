@@ -41,5 +41,10 @@ async function initialize() {
 // All account/map consumers share one callback exchange, including remounts.
 export function initializeAccountSession() {
   pending ??= initialize().catch(() => ({ user: null, linkError: true }));
-  return pending;
+  return pending.then(async (result) => {
+    // Revalidate on later page mounts rather than reusing a cached signed-in user
+    // after sign-out or an account switch.
+    const { data } = await supabase.auth.getUser();
+    return { user: data.user, linkError: !data.user && result.linkError };
+  });
 }

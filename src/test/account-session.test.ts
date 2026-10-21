@@ -47,4 +47,12 @@ describe("Account email callbacks", () => {
     expect((await initializeAccountSession()).user?.id).toBe("account-owner");
     expect(auth.verifyOtp).not.toHaveBeenCalled();
   });
+
+  it("does not restore a cached user after signing out and returning to account", async () => {
+    auth.getUser.mockResolvedValue({ data: { user: { id: "account-owner" } }, error: null });
+    const { initializeAccountSession } = await import("@/lib/account-session");
+    expect((await initializeAccountSession()).user?.id).toBe("account-owner");
+    auth.getUser.mockResolvedValue({ data: { user: null }, error: null });
+    expect((await initializeAccountSession()).user).toBeNull();
+  });
 });
