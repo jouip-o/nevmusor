@@ -18,16 +18,16 @@ export const Route = createFileRoute("/account")({
 });
 
 function AccountPage() {
-  const { user, ready } = useUser();
+  const { user, ready, linkError } = useUser();
   if (!ready) return <section className="section narrow account" />;
   return (
     <section className="section narrow account">
-      {user ? <Profile userId={user.id} email={user.email ?? ""} /> : <SignIn />}
+      {user ? <Profile userId={user.id} email={user.email ?? ""} /> : <SignIn linkError={linkError} />}
     </section>
   );
 }
 
-function SignIn() {
+function SignIn({ linkError }: { linkError: boolean }) {
   const { lang } = useI18n();
   const ru = lang === "ru";
   const [email, setEmail] = useState("");
@@ -39,19 +39,23 @@ function SignIn() {
     e.preventDefault();
     setBusy(true);
     setErr("");
-    const { error } = await supabase.auth.signInWithOtp({
-      email: email.trim(),
-      options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + "/account" },
-    });
-    setBusy(false);
-    if (error) return setErr(error.message);
-    setStep("sent");
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email: email.trim(),
+        options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + "/account" },
+      });
+      if (error) return setErr(ru ? "Не удалось отправить письмо. Попробуйте чуть позже." : "Unable to send the email. Please try again shortly.");
+      setStep("sent");
+    } catch {
+      setErr(ru ? "Нет соединения. Попробуйте ещё раз." : "Connection failed. Please try again.");
+    } finally { setBusy(false); }
   };
 
   return (
     <>
       <h1>{ru ? "Вход и регистрация" : "Sign in or register"}</h1>
       <p>{ru ? "Без пароля — мы пришлём ссылку для входа на email." : "No password — we'll email you a sign-in link."}</p>
+      {linkError && step === "enter" ? <p className="acc-err" role="alert">{ru ? "Ссылка уже использована или устарела. Запросите новое письмо для входа." : "This link has already been used or has expired. Request a new sign-in email."}</p> : null}
       {step === "enter" ? (
         <form className="acc-form" onSubmit={sendLink}>
           <label>
@@ -63,12 +67,16 @@ function SignIn() {
       ) : (
         <div className="acc-form">
           <p role="status">{ru ? `Мы отправили письмо на ${email.trim()}. Нажмите ссылку в письме, чтобы войти.` : `We emailed ${email.trim()}. Tap the link in the email to sign in.`}</p>
+          <p>{ru ? "Откройте самое новое письмо. Ссылка работает только один раз; вход откроется в том браузере, где вы её нажмёте." : "Open the newest email. The link works once; you will be signed in in the browser where you open it."}</p>
+          <form onSubmit={sendLink}>
+            <Button type="submit" className="btn btn-primary" disabled={busy}>{busy ? (ru ? "Отправляем…" : "Sending…") : ru ? "Отправить новую ссылку" : "Send a new link"}</Button>
+          </form>
           <Button type="button" variant="link" className="back" onClick={() => { setStep("enter"); setErr(""); }}>
             ← {ru ? "Другой email" : "Different email"}
           </Button>
         </div>
       )}
-      {err ? <p className="acc-err">{err}</p> : null}
+      {err ? <p className="acc-err" role="alert">{err}</p> : null}
     </>
   );
 }
