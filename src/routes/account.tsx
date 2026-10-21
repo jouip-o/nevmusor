@@ -7,6 +7,7 @@ import { useFavorites, useUser } from "@/lib/account";
 import { Button } from "@/components/ui/button";
 import { BatteryStats } from "@/lib/battery-stats";
 import { Referrals } from "@/lib/referrals";
+import { accountEmailRedirect } from "@/lib/referral-storage";
 
 export const Route = createFileRoute("/account")({
   head: () =>
@@ -42,7 +43,7 @@ function SignIn({ linkError }: { linkError: boolean }) {
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email: email.trim(),
-        options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + "/account" },
+        options: { shouldCreateUser: true, emailRedirectTo: accountEmailRedirect(window.location.origin) },
       });
       if (error) return setErr(ru ? "Не удалось отправить письмо. Попробуйте чуть позже." : "Unable to send the email. Please try again shortly.");
       setStep("sent");
