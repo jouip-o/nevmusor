@@ -4,4 +4,4 @@
 - [x] Add map popup stars connected to account favourites and verify saving/removal.
 - [x] Diagnose email-link account entry, handle expired links and verify persistent sign-in.
 - [x] Fix and verify email sign-in after entering through a referral link.
-- [ ] Prevent email sign-in links from sending visitors to Lovable registration.
+- [x] Prevent email sign-in links from sending visitors to Lovable registration.
