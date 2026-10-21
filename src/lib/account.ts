@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { initializeAccountSession } from "./account-session";
+import { useRouterState } from "@tanstack/react-router";
 
 // Session persists in browser storage, so people stay signed in after closing the site.
 export function useUser() {
+  const href = useRouterState({ select: (state) => state.location.href });
   const [user, setUser] = useState<User | null>(null);
   const [ready, setReady] = useState(false);
   const [linkError, setLinkError] = useState(false);
@@ -23,7 +25,7 @@ export function useUser() {
       setReady(true);
     });
     return () => { active = false; data.subscription.unsubscribe(); };
-  }, []);
+  }, [href]);
   return { user, ready, linkError };
 }
 
