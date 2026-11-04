@@ -1,5 +1,5 @@
 const KEY = "ref_code";
-const PUBLIC_ORIGIN = "https://nevmusor.lovable.app";
+const PUBLIC_ORIGIN = "https://nevmusor.site";
 
 function emailReturnOrigin(origin: string) {
   const { hostname } = new URL(origin);
@@ -29,9 +29,20 @@ export function clearReferral(code: string) {
   } catch { /* Sign-in remains available when storage is restricted. */ }
 }
 
+// Email links land on the site root ("/?to=account") because plain static hosts
+// (e.g. nginx without an SPA fallback) only serve index.html at "/"; the app then
+// moves the visitor to /account in the browser, keeping the sign-in tokens.
 export function accountEmailRedirect(origin: string) {
-  const url = new URL("/account", emailReturnOrigin(origin));
+  const url = new URL("/", emailReturnOrigin(origin));
+  url.searchParams.set("to", "account");
   const code = pendingReferral();
   if (code) url.searchParams.set("ref", code);
   return url.href;
+}
+
+export function accountReturnPath(href: string) {
+  const url = new URL(href);
+  if (url.pathname !== "/" || url.searchParams.get("to") !== "account") return null;
+  url.searchParams.delete("to");
+  return `/account${url.search}${url.hash}`;
 }
