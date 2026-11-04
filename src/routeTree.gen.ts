@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as PointRouteImport } from './routes/point'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
@@ -37,11 +36,6 @@ const AccountRoute = AccountRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeedbackRoute = FeedbackRouteImport.update({
-  id: '/feedback',
-  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuideRoute = GuideRouteImport.update({
@@ -70,7 +64,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/faq': typeof FaqRoute
-  '/feedback': typeof FeedbackRoute
   '/guide': typeof GuideRoute
   '/point': typeof PointRoute
   '/volunteer': typeof VolunteerRoute
@@ -81,7 +74,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/faq': typeof FaqRoute
-  '/feedback': typeof FeedbackRoute
   '/guide': typeof GuideRoute
   '/point': typeof PointRoute
   '/volunteer': typeof VolunteerRoute
@@ -93,7 +85,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/faq': typeof FaqRoute
-  '/feedback': typeof FeedbackRoute
   '/guide': typeof GuideRoute
   '/point': typeof PointRoute
   '/volunteer': typeof VolunteerRoute
@@ -106,7 +97,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/faq'
-    | '/feedback'
     | '/guide'
     | '/point'
     | '/volunteer'
@@ -117,7 +107,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/faq'
-    | '/feedback'
     | '/guide'
     | '/point'
     | '/volunteer'
@@ -128,7 +117,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/faq'
-    | '/feedback'
     | '/guide'
     | '/point'
     | '/volunteer'
@@ -140,7 +128,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
   FaqRoute: typeof FaqRoute
-  FeedbackRoute: typeof FeedbackRoute
   GuideRoute: typeof GuideRoute
   PointRoute: typeof PointRoute
   VolunteerRoute: typeof VolunteerRoute
@@ -175,13 +162,6 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/feedback': {
-      id: '/feedback'
-      path: '/feedback'
-      fullPath: '/feedback'
-      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guide': {
@@ -220,7 +200,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
   FaqRoute: FaqRoute,
-  FeedbackRoute: FeedbackRoute,
   GuideRoute: GuideRoute,
   PointRoute: PointRoute,
   VolunteerRoute: VolunteerRoute,
