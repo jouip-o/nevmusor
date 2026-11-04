@@ -21,7 +21,6 @@ const NAV = [
   { to: "/why", key: "nav.why", page: "why" },
   { to: "/volunteer", key: "nav.volunteer", page: "volunteer" },
   { to: "/about", key: "nav.about", page: "about" },
-  { to: "/feedback", key: "nav.feedback", page: "feedback" },
 ] as const;
 
 const LangCtx = createContext<{ lang: Lang; toggle: () => void }>({ lang: "ru", toggle: () => {} });
@@ -186,7 +185,6 @@ const PAGE_DESCRIPTIONS: Record<string, string> = {
   "Почему это важно — Не в мусор": "Почему батарейки нужно сдавать отдельно: влияние на окружающую среду и переработка в Чертаново.",
   "Волонтёрам — Не в мусор": "Волонтёрство в проекте «Не в мусор»: помощь пунктам приёма и экологическим акциям в Чертаново.",
   "О проекте — Не в мусор": "О проекте «Не в мусор» в Чертаново и проверенных пунктах приёма батареек.",
-  "Обратная связь — Не в мусор": "Обратная связь с проектом «Не в мусор»: сообщите об изменениях в пунктах приёма Чертаново.",
   "Пункт приёма — Не в мусор": "Адрес, часы работы и принимаемые батарейки: информация о выбранном пункте приёма в Чертаново.",
 };
 export const pageHead = (title: string, description = PAGE_DESCRIPTIONS[title] ?? DESCRIPTION) => ({
