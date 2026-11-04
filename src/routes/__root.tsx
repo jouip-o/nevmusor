@@ -1,4 +1,5 @@
 import { useCaptureReferral } from "@/lib/referrals";
+import { accountReturnPath } from "@/lib/referral-storage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -97,7 +98,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
   useCaptureReferral();
+  useEffect(() => {
+    const path = accountReturnPath(window.location.href);
+    if (path) router.history.replace(path);
+  }, [router]);
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>

@@ -18,3 +18,4 @@
 - Render map favourite controls through a React portal into Yandex balloon footer slots, sharing useFavorites with account and point pages so all saves use the same owner-scoped persistence.
 - Admin access is the user_roles table checked via has_role(); admin-only data comes from SECURITY DEFINER RPCs that verify the role, so no client-side admin checks grant data.
 - Build is SPA mode (tanstackStart.spa): dist/client is a static site with index.html shell + public/.htaccess fallback, so it can run on plain shared hosting; never add server functions or server routes.
+- Account email links return to the site root (/?to=account) and the app moves to /account client-side, because static hosts without an SPA fallback only serve index.html at /.
