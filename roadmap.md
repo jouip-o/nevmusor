@@ -5,3 +5,6 @@
 - [x] Diagnose email-link account entry, handle expired links and verify persistent sign-in.
 - [x] Fix and verify email sign-in after entering through a referral link.
 - [x] Prevent email sign-in links from sending visitors to Lovable registration.
+- [ ] Remove accounts, referrals and favourite stars from the site.
+- [ ] Disable registration and erase all user records from the connected backend.
+- [ ] Verify navigation, map details and database cleanup.

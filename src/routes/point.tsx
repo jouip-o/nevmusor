@@ -2,26 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { KIND_LABELS, POINTS } from "@/lib/data";
 import { pageHead, send, Tags, track, useI18n } from "@/lib/site";
-import { useFavorites, useUser } from "@/lib/account";
-
-function FavButton({ pointId }: { pointId: string }) {
-  const { lang } = useI18n();
-  const ru = lang === "ru";
-  const { user } = useUser();
-  const { ids, toggle } = useFavorites(user?.id);
-  if (!user)
-    return (
-      <Link className="rate-btn fav-btn" to="/account">
-        ☆ {ru ? "Войдите, чтобы сохранить" : "Sign in to save"}
-      </Link>
-    );
-  const on = ids.includes(pointId);
-  return (
-    <button type="button" className={`rate-btn fav-btn ${on ? "active" : ""}`} onClick={() => toggle(pointId)}>
-      {on ? "★" : "☆"} {ru ? (on ? "В избранном" : "В избранное") : on ? "Saved" : "Save"}
-    </button>
-  );
-}
 
 export const Route = createFileRoute("/point")({
   validateSearch: (s: Record<string, unknown>): { p?: string } => {
@@ -88,7 +68,6 @@ function PointPage() {
       <div className="detail-body narrow">
         <p className="detail-bar" style={{ display: "flex", alignItems: "center", gap: ".6rem" }}>
           <Link className="back" to="/" hash="map">← {t("detail.back")}</Link>
-          <FavButton pointId={p.id} />
         </p>
         <div className="addr">
           <a href={yandex} target="_blank" rel="noopener">{t("detail.route")} ↗</a>
