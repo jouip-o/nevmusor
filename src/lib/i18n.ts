@@ -139,8 +139,8 @@ export const I18N: any = {
     footer: {
       telegram: "Telegram",
       telegramUrl: "https://t.me/nevmusorsite",
-      links: "ВКонтакте — скоро",
-      credits: "Фото"
+      vk: "ВКонтакте",
+      vkUrl: "https://vk.ru/nevmusorsite"
     }
   },
 
@@ -281,8 +281,8 @@ export const I18N: any = {
     footer: {
       telegram: "Telegram",
       telegramUrl: "https://t.me/nevmusorsite",
-      links: "VK — coming soon",
-      credits: "Photo credits"
+      vk: "VK",
+      vkUrl: "https://vk.ru/nevmusorsite"
     }
   }
 };
