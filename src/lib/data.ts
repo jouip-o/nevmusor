@@ -16,7 +16,7 @@ export const POINTS: any = [
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
     contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6083, lng: 37.6019,
+    lat: 55.58895, lng: 37.60078,
     access: {
       ru: ["Войдите в магазин через главный вход.", "Бокс для батареек обычно стоит у входа или рядом с кассами.", "Если не видите бокс — спросите у сотрудника."],
       en: ["Enter the store through the main entrance.", "The battery box is usually near the entrance or next to the checkouts.", "If you cannot see it, ask a staff member."]
@@ -34,7 +34,7 @@ export const POINTS: any = [
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
     contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6135, lng: 37.6000,
+    lat: 55.60683, lng: 37.58961,
     access: {
       ru: ["Войдите в магазин через главный вход.", "Бокс для батареек обычно стоит у входа или рядом с кассами.", "Если не видите бокс — спросите у сотрудника."],
       en: ["Enter the store through the main entrance.", "The battery box is usually near the entrance or next to the checkouts.", "If you cannot see it, ask a staff member."]
@@ -52,7 +52,7 @@ export const POINTS: any = [
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
     contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6215, lng: 37.6045,
+    lat: 55.61859, lng: 37.59167,
     access: {
       ru: ["Войдите в магазин через главный вход.", "Бокс для батареек обычно стоит у входа или рядом с кассами.", "Если не видите бокс — спросите у сотрудника."],
       en: ["Enter the store through the main entrance.", "The battery box is usually near the entrance or next to the checkouts.", "If you cannot see it, ask a staff member."]
@@ -70,7 +70,7 @@ export const POINTS: any = [
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
     contact: { ru: "Горячая линия ВкусВилл: 8 800 550-86-02", en: "VkusVill hotline: 8 800 550-86-02" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6423, lng: 37.5975,
+    lat: 55.64057, lng: 37.60821,
     access: {
       ru: ["Магазин находится на 1 этаже строения 12.", "Войдите через главный вход торгового центра.", "Бокс для батареек — у входа в магазин или у касс; спросите у сотрудника."],
       en: ["The store is on the 1st floor of building 12.", "Enter through the main entrance of the shopping centre.", "The battery box is by the store entrance or the checkouts; ask a staff member."]
@@ -88,7 +88,7 @@ export const POINTS: any = [
     limit: { ru: "Только аккумуляторы (перезаряжаемые). Обычные батарейки не принимают.", en: "Rechargeable batteries only. Ordinary single-use batteries are not accepted." },
     contact: { ru: "Уточняется", en: "To be confirmed" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.5990, lng: 37.6015,
+    lat: 55.59453, lng: 37.59931,
     access: {
       ru: ["Пункт работает круглосуточно.", "Ищите контейнер для аккумуляторов рядом со входом.", "Инструкция будет дополнена после проверки на месте."],
       en: ["The point is open 24 hours.", "Look for the rechargeable-battery container near the entrance.", "Instructions will be completed after an on-site check."]
@@ -106,7 +106,7 @@ export const POINTS: any = [
     limit: { ru: "Бытовое количество. Уточняется.", en: "Household quantity. To be confirmed." },
     contact: { ru: "Горячая линия Пятёрочка: 8 800 555-55-05", en: "Pyaterochka hotline: 8 800 555-55-05" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6135, lng: 37.5795,
+    lat: 55.60842, lng: 37.57983,
     access: {
       ru: ["Войдите в магазин через главный вход.", "Контейнер для батареек обычно стоит в зоне у входа.", "Если не видите контейнер — спросите у сотрудника."],
       en: ["Enter the store through the main entrance.", "The battery container is usually in the entrance area.", "If you cannot see it, ask a staff member."]
@@ -124,7 +124,7 @@ export const POINTS: any = [
     limit: { ru: "Уточняется", en: "To be confirmed" },
     contact: { ru: "Уточняется", en: "To be confirmed" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6395, lng: 37.6035,
+    lat: 55.62880, lng: 37.59981,
     access: {
       ru: ["Инструкция будет дополнена после проверки на месте."],
       en: ["Instructions will be completed after an on-site check."]
@@ -137,12 +137,12 @@ export const POINTS: any = [
     name: { ru: "Ритейл-парк", en: "Retail park" },
     kind: "private",
     address: { ru: "Варшавское шоссе, 97, 1 этаж", en: "Varshavskoe Highway, 97, 1st floor" },
-    hours: { ru: "Уточняется (часы работы ТЦ)", en: "To be confirmed (mall hours)" },
+    hours: { ru: "Ежедневно 8:00–23:00", en: "Daily 8:00–23:00" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Уточняется", en: "To be confirmed" },
     contact: { ru: "Уточняется", en: "To be confirmed" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.6355, lng: 37.6160,
+    lat: 55.63339, lng: 37.62409,
     access: {
       ru: ["Контейнер находится на 1 этаже.", "Инструкция будет дополнена после проверки на месте."],
       en: ["The container is on the 1st floor.", "Instructions will be completed after an on-site check."]
@@ -154,13 +154,13 @@ export const POINTS: any = [
     id: "bat2",
     name: { ru: "Пункт приема батареек", en: "Battery acceptance point" },
     kind: "private",
-    address: { ru: "Старокачаловская улица, вл5А, 117216 • этаж 1", en: "Starokachalovskaya Street, 5A, 117216, 1st floor" },
+    address: { ru: "Старокачаловская улица, вл5А, 1 этаж", en: "Starokachalovskaya Street, 5A, 1st floor" },
     hours: { ru: "Ежедневно 10:00–20:00", en: "Daily 10:00–20:00" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Уточняется", en: "To be confirmed" },
     contact: { ru: "Уточняется", en: "To be confirmed" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.57002, lng: 37.57882,
+    lat: 55.56968, lng: 37.57905,
     access: {
       ru: ["Пункт находится на 1 этаже.", "Инструкция будет дополнена после проверки на месте."],
       en: ["The point is on the 1st floor.", "Instructions will be completed after an on-site check."]
@@ -172,13 +172,13 @@ export const POINTS: any = [
     id: "bat3",
     name: { ru: "Пункт приема батареек", en: "Battery acceptance point" },
     kind: "private",
-    address: { ru: "улица Поляны, 5Ак1, 117624", en: "Polyany Street, 5Ak1, 117624" },
+    address: { ru: "улица Поляны, 5Ак1", en: "Polyany Street, 5Ak1" },
     hours: { ru: "Ежедневно 11:00–20:00", en: "Daily 11:00–20:00" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Уточняется", en: "To be confirmed" },
     contact: { ru: "Уточняется", en: "To be confirmed" },
     bonus: { ru: "Нет", en: "None" },
-    lat: 55.55467, lng: 37.55284,
+    lat: 55.55526, lng: 37.55401,
     access: {
       ru: ["Инструкция будет дополнена после проверки на месте."],
       en: ["Instructions will be completed after an on-site check."]
@@ -190,7 +190,7 @@ export const POINTS: any = [
     id: "bat4",
     name: { ru: "Пункт приема батареек", en: "Battery acceptance point" },
     kind: "private",
-    address: { ru: "бульвар Адмирала Ушакова, 7, 117624 • этаж 1", en: "Admiral Ushakov Boulevard, 7, 117624, 1st floor" },
+    address: { ru: "бульвар Адмирала Ушакова, 7 • этаж 1", en: "Admiral Ushakov Boulevard, 7, 1st floor" },
     hours: { ru: "Круглосуточно", en: "24 hours" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Уточняется", en: "To be confirmed" },
@@ -208,7 +208,7 @@ export const POINTS: any = [
     id: "vv5",
     name: { ru: "ВкусВилл", en: "VkusVill" },
     kind: "private",
-    address: { ru: "Бульвар Дмитрия Донского, 2к1, 117628 • этаж 1", en: "Dmitry Donskoy Boulevard, 2k1, 117628, 1st floor" },
+    address: { ru: "Бульвар Дмитрия Донского, 2к1 • этаж 1", en: "Dmitry Donskoy Boulevard, 2k1, 1st floor" },
     hours: { ru: "Ежедневно 9:00–23:00", en: "Daily 9:00–23:00" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
@@ -226,7 +226,7 @@ export const POINTS: any = [
     id: "vv6",
     name: { ru: "ВкусВилл", en: "VkusVill" },
     kind: "private",
-    address: { ru: "Феодосийская улица, 7к3, 117216", en: "Feodosiyskaya Street, 7k3, 117216" },
+    address: { ru: "Феодосийская улица, 7к3", en: "Feodosiyskaya Street, 7k3" },
     hours: { ru: "Ежедневно 9:00–22:00", en: "Daily 9:00–22:00" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
@@ -244,7 +244,7 @@ export const POINTS: any = [
     id: "vv7",
     name: { ru: "ВкусВилл", en: "VkusVill" },
     kind: "private",
-    address: { ru: "Скобелевская улица, 20, 117624", en: "Skebelevskaya Street, 20, 117624" },
+    address: { ru: "Скобелевская улица, 20", en: "Skebelevskaya Street, 20" },
     hours: { ru: "Ежедневно 7:00–23:45", en: "Daily 7:00–23:45" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },
@@ -280,7 +280,7 @@ export const POINTS: any = [
     id: "vv9",
     name: { ru: "ВкусВилл", en: "VkusVill" },
     kind: "private",
-    address: { ru: "Южнобутовская улица, 113, 117042", en: "Yuzhnobutovskaya Street, 113, 117042" },
+    address: { ru: "Южнобутовская улица, 113", en: "Yuzhnobutovskaya Street, 113" },
     hours: { ru: "Ежедневно 9:00–22:00", en: "Daily 9:00–22:00" },
     accepts: ["household", "button", "rechargeable"],
     limit: { ru: "Бытовое количество (пакет). Уточняется.", en: "Household quantity (one bag). To be confirmed." },

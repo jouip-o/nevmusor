@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { KIND_LABELS, POINTS } from "@/lib/data";
-import { pageHead, send, Tags, track, useI18n } from "@/lib/site";
+import { pageHead, Tags, track, useI18n } from "@/lib/site";
 
 export const Route = createFileRoute("/point")({
   validateSearch: (s: Record<string, unknown>): { p?: string } => {
@@ -16,11 +16,9 @@ function PointPage() {
   const { t, tr } = useI18n();
   const { p: id } = Route.useSearch();
   const p = POINTS.find((x: any) => x.id === id);
-  const [saved, setSaved] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     if (!p) return;
-    setSaved(JSON.parse(localStorage.getItem("rate:" + p.id) || "{}"));
     track("point_view", { id });
   }, [id]);
 
@@ -41,19 +39,6 @@ function PointPage() {
 
   const yandex = `https://yandex.ru/maps/?pt=${p.lng},${p.lat}&z=17&l=map`;
   const building = p.photos.building;
-
-  const rate = (q: string, v: boolean) => {
-    const next = { ...saved, [q]: v };
-    localStorage.setItem("rate:" + p.id, JSON.stringify(next));
-    send({ kind: "rating", point: p.id, ...next });
-    track("rating", { id: p.id, q, v: String(v) });
-    setSaved(next);
-  };
-  const rb = (q: string, v: boolean, label: string) => (
-    <button type="button" className={`rate-btn ${saved[q] === v ? "active" : ""}`} data-q={q} data-v={String(v)} onClick={() => rate(q, v)}>
-      {label}
-    </button>
-  );
 
   return (
     <div id="detailBody">
@@ -84,19 +69,6 @@ function PointPage() {
         <ol className="steps">
           {tr(p.access).map((s: string) => <li key={s}>{s}</li>)}
         </ol>
-        <div className="rate" id="rate">
-          <p>{t("detail.usefulQ")}</p>
-          <div className="rate-row">
-            {rb("useful", true, `👍 ${t("detail.yes")}`)}
-            {rb("useful", false, `👎 ${t("detail.no")}`)}
-          </div>
-          <p>{t("detail.planQ")}</p>
-          <div className="rate-row">
-            {rb("plan", true, t("detail.planYes"))}
-            {rb("plan", false, t("detail.planNo"))}
-          </div>
-          <p className="thanks" hidden={!Object.keys(saved).length}>{t("detail.thanks")}</p>
-        </div>
       </div>
     </div>
   );
