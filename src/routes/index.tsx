@@ -56,7 +56,7 @@ function Index() {
             hintContent: `${tr(p.name)}, ${tr(p.address)}`,
             balloonContentHeader: `${i + 1}. ${tr(p.name)}`,
             balloonContentBody: `${tr(p.address)}<br>🕘 ${tr(p.hours)}`,
-            balloonContentFooter: `<div class="map-popup-footer"><a href="/point?p=${p.id}">${t("map.details")} →</a></div>`,
+            balloonContentFooter: `<div class="map-popup-footer"><a href="/#/point?p=${p.id}">${t("map.details")} →</a></div>`,
           },
           { preset: "islands#circleIcon", iconColor: "#5c2b03", iconSize: [30, 30], iconTextSize: 12, balloonPanelMaxMapArea: 0, balloonMaxWidth: 260 }
         );
@@ -122,19 +122,19 @@ function Index() {
         <div className="hero-inner">
           <div className="hero-text">
             <h1>{t("hero.title")}</h1>
-            <a className="btn btn-big" href="#map">
+            <Link className="btn btn-big" to="/" hash="map">
               {t("hero.cta")}
-            </a>
+            </Link>
             <p className="hero-hint">
               <span id="statPoints">{POINTS.length}</span> <span>{t("hero.statPoints")}</span>
             </p>
           </div>
         </div>
-        <a className="scroll-arrow" href="#map" aria-label="Scroll to map">
+        <Link className="scroll-arrow" to="/" hash="map" aria-label="Scroll to map">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
             <path d="M12 4v16M5 13l7 7 7-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </a>
+        </Link>
       </section>
 
       <section className="map-section full" id="map">
