@@ -5,7 +5,7 @@ import { pageHead, useI18n } from "@/lib/site";
 import { FaqList } from "@/lib/faq";
 
 export const Route = createFileRoute("/")({
-  head: () => pageHead("Не в мусор — Чертаново"),
+  head: () => pageHead("Не в мусор — пункты приёма батареек"),
   component: Index,
 });
 
