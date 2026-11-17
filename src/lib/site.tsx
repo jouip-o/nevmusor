@@ -128,7 +128,7 @@ export function Footer() {
           <strong>{t("siteName")}</strong>
         </p>
         <p>
-          <span>{t("footer.links")}</span> · <a href="/CREDITS.md">{t("footer.credits")}</a>
+          <a href={t("footer.telegramUrl")} target="_blank" rel="noopener noreferrer">{t("footer.telegram")}</a> · <span>{t("footer.links")}</span> · <a href="/CREDITS.md">{t("footer.credits")}</a>
         </p>
       </footer>
     </div>

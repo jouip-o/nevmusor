@@ -137,7 +137,9 @@ export const I18N: any = {
       empty: "Пожалуйста, напишите сообщение."
     },
     footer: {
-      links: "Telegram · ВКонтакте — скоро",
+      telegram: "Telegram",
+      telegramUrl: "https://t.me/nevmusorsite",
+      links: "ВКонтакте — скоро",
       credits: "Фото"
     }
   },
@@ -277,7 +279,9 @@ export const I18N: any = {
       empty: "Please write a message."
     },
     footer: {
-      links: "Telegram · VK — coming soon",
+      telegram: "Telegram",
+      telegramUrl: "https://t.me/nevmusorsite",
+      links: "VK — coming soon",
       credits: "Photo credits"
     }
   }
