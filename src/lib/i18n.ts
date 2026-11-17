@@ -122,7 +122,6 @@ export const I18N: any = {
       title: "О проекте",
       p1: "Наша цель — сделать так, чтобы каждому жителю Москвы было просто сдать батарейки и мелкую электронику: собрать все проверенные пункты приёма, правила и бонусы на одном сайте, удобном для телефона.",
       p2: "Мы начинаем с одного района — Чертаново — и проверяем каждую точку лично, а не по описанию в интернете. Десять правильных пунктов лучше пятидесяти наполовину неверных: тот, кто придёт к закрытому пункту, не вернётся.",
-      p3: "Проект делают школьники и студенты. Информацию о сайте мы распространяем через плакаты с QR-кодом в подъездах и магазинах, а также в Telegram и ВКонтакте."
     },
     fb: {
       title: "Обратная связь",
@@ -264,7 +263,6 @@ export const I18N: any = {
       title: "About the project",
       p1: "Our goal is to make it simple for Moscow residents to recycle batteries and small electronics by gathering every verified drop-off point, rule and incentive into one mobile-first site.",
       p2: "We start with one district — Chertanovo — and check every point in person rather than from online listings. Ten correct points are worth more than fifty half-wrong ones: a resident who walks to a closed point will not return.",
-      p3: "The project is run by school and university students. We spread the word with QR-code posters in building entrances and shops, and through Telegram and VK."
     },
     fb: {
       title: "Feedback",
